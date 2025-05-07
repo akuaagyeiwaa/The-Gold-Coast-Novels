@@ -1,0 +1,1151 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marita - Gold Coast Novels</title>
+    <!-- Add Google Translate Script -->
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <!-- Add to head section -->
+<style>
+    [data-theme="dark"] {
+        --bg-color: #1a1a1a;
+        --text-color: #ffffff;
+        --accent-color: #F4C430;
+        --secondary-bg: #333;
+    }
+
+    [data-theme="light"] {
+        --bg-color: #ffffff;
+        --text-color: #000000;
+        --accent-color: #DAA520;
+        --secondary-bg: #f5f5f5;
+    }
+
+    body {
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        transition: all 0.3s ease;
+    }
+
+    .theme-toggle {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        padding: 10px;
+        border-radius: 50%;
+        border: none;
+        background: var(--accent-color);
+        cursor: pointer;
+        z-index: 1000;
+    }
+</style>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        header {
+            background: #DAA520;
+            color: #fff;
+            padding: 1rem 0;
+            text-align: center;
+        }
+
+        .back-nav {
+            background: #444;
+            padding: 0.5rem 0;
+            text-align: left;
+        }
+
+        .back-nav a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 20px;
+            display: inline-block;
+            padding: 5px 15px;
+        }
+
+        .back-nav a:hover {
+            text-decoration: underline;
+        }
+
+        .tab-container {
+            width: 100%;
+            margin: 20px 0;
+        }
+
+        .tabs {
+            display: flex;
+            background: #DAA520;
+            padding: 10px 0 0 0;
+            margin: 0;
+            justify-content: center;
+        }
+
+        .tab-button {
+            background: none;
+            border: none;
+            padding: 10px 20px;
+            margin: 0 5px;
+            cursor: pointer;
+            color: white;
+            font-size: 16px;
+            border-radius: 5px 5px 0 0;
+        }
+
+        .tab-button.active {
+            background: #F4C430;
+            color: black;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 20px;
+            background: #fff;
+            border: 1px solid #DAA520;
+            margin: 0 20px;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        footer {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+
+        footer a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Accordion Styles */
+        .accordion {
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .accordion-item {
+            border: 1px solid #ddd;
+            margin-bottom: 5px;
+        }
+
+        .accordion-header {
+            background: #F4C430;
+            padding: 15px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: none;
+            width: 100%;
+            text-align: left;
+            font-size: 16px;
+        }
+
+        .accordion-header:hover {
+            background: #DAA520;
+        }
+
+        .accordion-content {
+            padding: 0 15px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            background: #fff;
+        }
+
+        .accordion-content.active {
+            max-height: 1000px; /* Adjust this value based on content length */
+            padding: 15px;
+        }
+
+        .accordion-header::after {
+            content: '+';
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .accordion-header.active::after {
+            content: '-';
+        }
+        /* Previous styles remain the same */
+
+        /* Additional styles for new features */
+        .tools-container {
+            position: fixed;
+            right: 20px;
+            top: 100px;
+            background: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+
+        .tool-button {
+            display: block;
+            margin: 5px 0;
+            padding: 8px 15px;
+            background: #DAA520;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .tool-button:hover {
+            background: #F4C430;
+        }
+
+        .search-box {
+            margin: 20px 0;
+            padding: 15px;
+            background: #f5f5f5;
+            border-radius: 5px;
+        }
+
+        .search-box input {
+            padding: 8px;
+            width: 70%;
+            margin-right: 10px;
+        }
+
+        .search-box button {
+            padding: 8px 15px;
+            background: #DAA520;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .search-results {
+            margin-top: 15px;
+            padding: 10px;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .highlight {
+            background-color: yellow;
+        }
+
+        /* Read Aloud controls */
+        .read-aloud-controls {
+            display: flex;
+            gap: 10px;
+            margin: 15px 0;
+            align-items: center;
+        }
+
+        .read-aloud-controls button {
+            padding: 8px 15px;
+            background: #DAA520;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .speed-control {
+            padding: 5px;
+        }
+    </style>
+<!-- Add to head -->
+<style>
+    .progress-container {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        height: 4px;
+        background: #f1f1f1;
+        z-index: 1000;
+    }
+
+    .progress-bar {
+        height: 4px;
+        background: var(--accent-color);
+        width: 0%;
+    }
+</style>
+<!-- Add to head -->
+<style>
+    .share-buttons {
+        position: fixed;
+        left: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .share-button {
+        padding: 10px;
+        border-radius: 50%;
+        border: none;
+        background: var(--accent-color);
+        cursor: pointer;
+        color: white;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+</style>
+<!-- Add to head -->
+<style>
+    .toc {
+        position: fixed;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: var(--secondary-bg);
+        padding: 20px;
+        border-radius: 10px;
+        max-width: 250px;
+        max-height: 80vh;
+        overflow-y: auto;
+
+</style>
+<!-- Add to head -->
+<style>
+    .font-controls {
+        position: fixed;
+        right: 20px;
+        bottom: 20px;
+        background: var(--secondary-bg);
+        padding: 10px;
+        border-radius: 5px;
+        display: flex;
+        gap: 10px;
+    }
+
+    .font-button {
+        padding: 5px 10px;
+        background: var(--accent-color);
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+        color: white;
+    }
+</style>
+<!-- Add to head section -->
+<style>
+    .analytics-dashboard {
+        position: fixed;
+        right: 20px;
+        bottom: 80px;
+        background: var(--secondary-bg);
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        display: none; /* Hidden by default */
+        z-index: 1000;
+    }
+
+    .analytics-toggle {
+        position: fixed;
+        right: 20px;
+        bottom: 20px;
+        padding: 10px;
+        background: var(--accent-color);
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .analytics-chart {
+        margin: 10px 0;
+        padding: 10px;
+        background: white;
+        border-radius: 5px;
+    }
+</style>
+</head>
+<body data-theme="light">
+    <!-- Add to body start -->
+<div class="progress-container">
+    <div class="progress-bar" id="readingProgress"></div>
+</div>
+
+    <!-- Add to body -->
+<button class="theme-toggle" onclick="toggleTheme()">
+    <span id="theme-icon">🌙</span>
+</button>
+    <header>
+        <h1>Marita</h1>
+    </header>
+    <div class="back-nav">
+        <a href="index.html">← Back to Home</a>
+    </div>
+    <main>
+        <div class="tools-container">
+            <div id="google_translate_element"></div>
+            <button class="tool-button" onclick="toggleReadAloud()">Toggle Read Aloud</button>
+            <button class="tool-button" onclick="document.getElementById('search-box').focus()">Search in Text</button>
+        </div>
+
+        <div class="tab-container">
+            <div class="tabs">
+                <button class="tab-button active" onclick="openTab(event, 'author')">The Author</button>
+                <button class="tab-button" onclick="openTab(event, 'fulltext')">Full Text</button>
+                <button class="tab-button" onclick="openTab(event, 'themes')">Themes</button>
+                <button class="tab-button" onclick="openTab(event, 'characters')">Characters</button>
+                <button class="tab-button" onclick="openTab(event, 'excerpts')">Excerpts</button>
+                <button class="tab-button" onclick="openTab(event, 'immersive')">Immersive Reader</button>
+            </div>
+
+            <div id="author" class="tab-content active">
+                <h2>About the Author</h2>
+                <div class="author-info">
+                    <h3>Author Biography</h3>
+                    <p>Author information and biography goes here...</p>
+                </div>
+            </div>
+
+            <div id="fulltext" class="tab-content">
+                <h2>Full Text</h2>
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <button class="accordion-header">Chapter 1: 23rd January 1886.Bonsoe Penin's</span> INTERVIEW WITH <span
+                class="personal-name">QUAIBU</span> UPON THE SUBJECT OF HIS IMPENDING MARRIAGE</button>
+                        <div class="accordion-content">
+                            <p>‘So my dear friend, yon have gone and done it; I am surprised and astonished at you, I certainly gave you
+                more credit for a good share of common sense, and sufficient knowledge of the world. Is it possible, and
+                can it be true that it was yours the banns, that was published in the chapel yesterday?’ This was
+                uttered by a man of about forty five years, strong but slenderly built, and of middle stature;
+                complexion sallow red, his eyes were keen but yet seldom look you twice in the face, and his features
+                regular. His manners were grave, but a more jovial and sincere friend never lived. In his youth he had
+                the advantage of the best English education; besides being a good Latin, Greek and Hebrew scholar. <span
+                        class="personal-name">Bonsoe Penin</span>, the name of this gentleman, was not a bachelor, yet
+                he was married, he had several wives; two he had living with him in his own house; the rest lived in
+                their own houses, and it is strange to say that he lived happily with them all.</p>
+
+
+            <p>Mr <span class="personal-name">Quaibu</span>, the hero of this tale, was a man who had just entered his
+                fortieth year short and slenderly built, healthy and strong. His features were not different from any of
+                his countrymen’s - real type of a negro. He also had the advantage of English education, moved in the
+                highest society, both European and native, and at the time that this tale was commenced he was filling a
+                post -which was worth to him several hundred pounds sterling a year.</p>
+
+            <p>These two gentlemen were fast friends, so strong was their friendship that not a day passed but what you
+                would see them together. No wonder therefore that Mr <span class="personal-name">Bonsoe Penin</span>
+                used such familiar terms to his friend <span class="personal-name">Quaibu</span>. </p>
+
+            <p>‘Gently, <span class="personal-name">Bonsoe Penin</span>,’ replied <span
+                    class="personal-name">Quaibu</span>, ‘Not -so fast. Take a seat and cool yourself with a glass of
+                Moselle and soda before you attempt to talk, as you are burning with heat. It is thus that I punish you
+                for your hard words. After you have rested we will find time to talk about the matter and any amount of
+                nonsense you like.’ </p>
+
+            <p> ‘By — ! <span class="personal-name">Quaibu</span> you are really provoking! I swear that 1 will not sit
+                down, nor allow myself to be insulted by your offer of drink until you have satisfied me. Was the banns
+                published yours and Miss <span class="personal-name-2">Wissah</span>’s?’ replied <span
+                        class="personal-name-3"><span class="personal-name-3">Bonsoe Penin</span></span> persistently.
+            </p>
+
+            <p> ‘Yes, <span class="personal-name-3">Bonsoe Penin</span>, are you satisfied now? or rather, are you in
+                such a state as would admit of your taking a “shot” now before talking.’ </p>
+
+            <p><span class="personal-name-3">Bonsoe Penin</span> here took a seat on the other side of the table at
+                which he met his friend sitting and writing his books. Mr <span class="personal-name">Quaibu</span>
+                called for a bottle of Moselle and two of soda and glasses. The boy took off the wines, placed the
+                bottles on the tables and then retired leaving the two friends to enjoy themselves. ‘How clumsy you are
+                today <span class="personal-name">Quaibu</span>’, exclaimed <span
+                        class="personal-name-3">Bonsoe Penin</span> getting up suddenly. ‘By Jove! you have wet me all
+                over. On my clean shirt and collar! and I am due the court in twenty minutes time, and His Honour the
+                Chief Justice is so provokingly punctual! Where the d— am I going to get a change of shirt? And the
+                court is fully 15 minutes ride from here. I wish I never allowed myself to be tempted by this accursed
+                drink. What must I do, <span class="personal-name">Quaibu</span>?’ </p>
+
+            <p>I will lend you a shirt, old fellow and a dozen collars if you like,’ replied <span
+                    class="personal-name">Quaibu</span> laughing. </p>
+
+            <p>‘Pooh, man your shirt wont fit me, it will choke me. I will none of your babyish shirts, especially in
+                court and to-day too when I have to defend a poor murderer and have to do all I can to save the poor
+                man’s innocent neck from coming into close proximity with the hangman’s noose.’ </p>
+
+            <p>‘No, no, <span class="personal-name">Quaibu</span>, I would rather play truant to-day from Court and
+                endure his Honour’s reprimand tomorrow than lose my client’s cause, which I would certainly do were I to
+                go to Court to-day with your shirt on.’</p>
+
+            <p>‘Boy! boy!’ called Mr <span class="personal-name">Quaibu</span> to his servant; ‘bring another bottle of
+                Moselle. I must say <span class="personal-name-3">Bonsoe Penin</span>, if your “learned self,” instead
+                of apparel, had shown such a great aptitude for drinking to-day I would certainly be glad. See there is
+                not a drop of wine left in the bottle and we are still dry. You will open the second bottle, and after
+                we have had our first shot you will indite a letter to His Honour to postpone the hearing of your case
+                until tomorrow; after which we will have time to talk freely and uninterruptedly.’ </p>
+
+            <p><span class="personal-name-3">Bonsoe Penin</span> here upon indited a letter to His Honour assigning
+                other reasons than that which was the true cause of his inability to attend the Court; and after
+                despatching it by his own boy, sat down minus coat as contented as if no mishap had taken place and the
+                two friends commenced talking seriously together</p>.
+
+            <img src="images/86-jan30-marita1.jpg" alt="Original Marita Script Page 1" width="200" height="300">
+        </figure>
+        <figure>
+            <img src="images/86-jan30-marita2.jpg" alt="Original Marita Script Page 2" width="200" height="300">
+        </figure>
+</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">I0h February 1886</button>
+                        <div class="accordion-content">
+                            <p>We must now leave these two gentlemen, and introduce the heroine of this tale to the reader. Miss <span
+                    class="personal-name-2">Wissah</span>, at the time that this tale commenced was a woman of about
+                four and twenty years old; in stature she was short, but proportionably well built; she was neither
+                stout nor thin, although she had a tendency towards stoutness. Her features were not very regular but
+                extremely pleasing; her gait or steps were faultless, and she has a way of carrying herself among her
+                own class — the uneducated women — that she is everywhere considered to be equal if not superior to any
+                of her companions. It is only in company of educated ladies that she exhibits a consciousness of
+                inferiority. Coupled with these natural advantages she has a strong and well regulated mind which wanted
+                only education to have made her perfect. In fact she was a woman gifted by nature to adorn any (XP
+                society if she had been cultured. Was it to be wondered at that Mr <span
+                        class="personal-name">Quaibu</span> became fascinated by her even in spite of her want of
+                education, and the occasional burst of temper which she exhibited. Love is blind, and in the case of Mr
+                <span class="personal-name">Quaibu</span> as well as Miss <span class="personal-name-2">Wissah</span>’s,
+                <span class="personal-name-cupid"><a href="https://en.wikipedia.org/wiki/Cupid"
+                                                     target="_blank">Cupid</a></span> never played a severer trick upon
+                two fools. </p>
+
+            <p>Mr <span class="personal-name">Quaibu</span> and Miss <span class="personal-name-2">Wissah</span> had
+                lived as man and wife for more than eight years, enjoying all the, blessings of married life. Mr <span
+                        class="personal-name">Qauibu</span> showed the same amount of respect for his lady as he would
+                have shown had their marriage been solemnized in the Church. He stuck to her alone and would on no
+                account take or keep any other woman. Every lady respected her as if a minister had joined them together
+                in holy wedlock. Miss <span class="personal-name-2">Wissah</span> on her part honoured and above all
+                obeyed Mr <span class="personal-name">Quaibu</span> in every thing and at all times. She felt great
+                interest in her good man’s affairs, which she in every way considered as her own. In fact, no two
+                persons that have been united together by the church could have lived more happily together than those
+                two who were only married by country marriage,10 a marriage looked down upon as debasing and degrading.
+            </p>
+
+            <p> I may add that although Mr <span class="personal-name">Quaibu</span> and his wife attended chapel and
+                were <span class="personal-name-christians"><a href="https://en.wikipedia.org/wiki/Christians"
+                                                               target="_blank">Christians</a></span>, nominally, since
+                they were not class members," yet the gentleman through reasons of his own would never be induced to
+                attend class meetings. As for the lady she never knew what it was, until Mrs <span
+                        class="personal-name-4">Pritzia</span> the minister's wife and her husband who was a friend of
+                Mr <span class="personal-name">Quaibu</span> thought it a duty incumbent upon them to endeavour to
+                convert her. They accordingly got her to enter her name in the class list, and in course of time was
+                baptized and duly became a member of the <span class="place-name-wesleyan"><a
+                        href="https://en.wikipedia.org/wiki/Wesleyan_theology" target="_blank">Wesleyan</a></span> body;
+                Mr <span class="personal-name">Quaibu</span> seeing no fault in the step having given his consent
+                thereto previously. From that day things began to wear a different aspect; Miss <span
+                        class="personal-name-2">Wissah</span> visibly changed. What delighted her before became sin in
+                her eyes. Those innocent and harmless pleasures that used to amuse her were considered by her as sinful;
+                she became moody, discontented and restless. She would, for hours, go to the minister’s house and come
+                home looking as if something was troubling her mind. To Mr <span class="personal-name">Quaibu</span>’s
+                inquiries as to her change of conduct and behaviour, she would reply ‘nothing.’ In the meantime Rev: Mr
+                <span class="personal-name-4">Pritzia</span> became assiduous in pressing Mr <span
+                        class="personal-name">Quaibu</span> to become a class member, as [Miss <span
+                        class="personal-name-2">Wissah</span> had been, and that it only wanted that to make <span
+                        class="personal-name-2">Wissah</span> and himself happy in their marriage life. Mr <span
+                        class="personal-name">Quaibu</span> could not well see through that, for had he not lived with
+                his wife more than eight years happily and in the most agreeable manner? From that day he saw and deeply
+                felt that the heart of his lady as well as her love and affections had been taken away from him, and by
+                a certain mistaken notion of christian religion. Henceforward he must make up his mind to lead a
+                miserable life with her he loved, unless he turned her away at once or became a class member himself.
+                Things were in this state when a European minister arrived who took charge of the station and Mr <span
+                        class="personal-name-4">Pritzia</span> became his assistant. Rev Mr <span
+                        class="personal-name-19">Powers</span> and Mr <span class="personal-name">Quaibu</span> became
+                friends, and in a short time their friendship developed into intimacy. Religion formed principally the
+                subject of their conversation; and after a time Mr <span class="personal-name">Quaibu</span> was induced
+                to promise and ultimately become a class member, having for leader his friend Mr <span
+                        class="personal-name-19">Powers</span>. </p>
+
+            <p>If his obstinacy to be a class member was the cause of the change of con- duct in Miss <span
+                    class="personal-name-2">Wissah</span>, Mr <span class="personal-name">Quaibu</span> had cause to
+                rejoice when he enrolled his name as a member of the Wesleyan Society; for the same spirit of
+                contentment, love and happiness that ruled in their domestic hearth before Miss <span
+                        class="personal-name-2">Wissah</span> became a member returned and they lived happily together
+                again. But the two ministers had not finished with them yet. <span class="personal-name">Quaibu</span>
+                must give to his wife a ring through a minister, before God and in the open chapel; in fine they must
+                enter into the ‘Holy state of matrimony’ before they could be admitted as full members of the society.
+                In for a penny, in for a pound. The lady was willing, her people were willing; <span
+                        class="personal-name">Quaibu</span> had to consult nobody, and there was ‘no just cause or
+                impediment’ why he also should not be willing; for had he not lived for several years happily together
+                with Miss <span class="personal-name-2">Wissah</span>? Before God, Mr <span
+                        class="personal-name">Quaibu</span> conscientiously considered Miss <span
+                        class="personal-name-2">Wissah</span> legally his wife although no minister had married them. He
+                had not the least doubt that God, the searcher of hearts considered them as man and wife; and if it only
+                wanted the mere putting on of a ring on the part of the woman to make their marriage legal in the eyes
+                of men, well, he must conform to it: and the announcement of their banns was accordingly published in
+                the Sunday previous to the day Bonsoe Pennin called on his friend Mr <span
+                        class="personal-name">Quaibu</span> in the great trepidation and astonishment mentioned at the
+                opening of this chapter. </p>
+
+            <img src="images/maritafeb10_1.jpg" alt="A description of the image" width="200" height="300">
+            <img src="images/maritafeb10_2.jpg" alt="A description of the image" width="200" height="300">
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">Chapter 3: The Journey</button>
+                        <div class="accordion-content">
+                            <p>Content for Chapter 3 goes here...</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">Chapter 4: The Discovery</button>
+                        <div class="accordion-content">
+                            <p>Content for Chapter 4 goes here...</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">Chapter 5: The Challenge</button>
+                        <div class="accordion-content">
+                            <p>Content for Chapter 5 goes here...</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">Chapter 6: The Conflict</button>
+                        <div class="accordion-content">
+                            <p>Content for Chapter 6 goes here...</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">Chapter 7: The Struggle</button>
+                        <div class="accordion-content">
+                            <p>Content for Chapter 7 goes here...</p>
+                        </div>
+                    </div>
+                    <div class<pad><pad><pad><pad><pad><pad><pad><pad>
+
+
+
+
+
+
+
+
+
+
+
+
+                        <button class="accordion-header">Chapter 8: The Revelation</button>
+                        <div class="accordion-content">
+                            <p>Content for Chapter 8 goes here...</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">Chapter 9: The Decision</button>
+                        <div class="accordion-content">
+                            <p>Content for Chapter 9 goes here...</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">Chapter 10: The Change</button>
+                        <div class="accordion-content">
+                            <p>Content for Chapter 10 goes here...</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">Chapter 11: The Turn</button>
+                        <div class="accordion-content">
+                            <p>Content for Chapter 11 goes here...</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">Chapter 12: The Path</button>
+                        <div class="accordion-content">
+                            <p>Content for Chapter 12 goes here...</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">Chapter 13: The Choice</button>
+                        <div class="accordion-content">
+                            <p>Content for Chapter 13 goes here...</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">Chapter 14: The Test</button>
+                        <div class="accordion-content">
+                            <p>Content for Chapter 14 goes here...</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">Chapter 15: The Trial</button>
+                        <div class="accordion-content">
+                            <p>Content for Chapter 15 goes here...</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">Chapter 16: The Victory</button>
+                        <div class="accordion-content">
+                            <p>Content for Chapter 16 goes here...</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">Chapter 17: The Truth</button>
+                        <div class="accordion-content">
+                            <p>Content for Chapter 17 goes here...</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">Chapter 18: The Climax</button>
+                        <div class="accordion-content">
+                            <p>Content for Chapter 18 goes here...</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">Chapter 19: The Confrontation</button>
+                        <div class="accordion-content">
+                            <p>Content for Chapter 19 goes here...</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">Chapter 20: Resolution</button>
+                        <div class="accordion-content">
+                            <p>Content for Chapter 20 goes here...</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">Chapter 21: Epilogue</button>
+                        <div class="accordion-content">
+                            <p>Content for the Epilogue goes here...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="themes" class="tab-content">
+                <h2>Themes</h2>
+                <div class="themes-content">
+                    <h3>Major Themes</h3>
+                    <ul>
+                        <li>Theme 1</li>
+                        <li>Theme 2</li>
+                        <li>Theme 3</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="characters" class="tab-content">
+                <h2>Characters</h2>
+                <div class="characters-content">
+                    <h3>Main Characters</h3>
+                    <div class="character-list">
+                        <p>Character descriptions go here...</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="excerpts" class="tab-content">
+                <h2>Notable Excerpts</h2>
+                <div class="excerpts-content">
+                    <h3>Key Passages</h3>
+                    <blockquote>
+                        Example excerpt from the novel...
+                    </blockquote>
+                </div>
+            </div>
+
+            <!-- Add new Immersive Reader tab -->
+            <div id="immersive" class="tab-content">
+                <h2>Immersive Reader</h2>
+
+                <div class="search-box">
+                    <input type="text" id="search-box" placeholder="Search in text...">
+                    <button onclick="searchText()">Search</button>
+                    <div class="search-results" id="search-results"></div>
+                </div>
+
+                <div class="read-aloud-controls">
+                    <button onclick="startReading()">Play</button>
+                    <button onclick="pauseReading()">Pause</button>
+                    <button onclick="stopReading()">Stop</button>
+                    <select class="speed-control" onchange="changeReadingSpeed(this.value)">
+                        <option value="0.8">Slow</option>
+                        <option value="1.0" selected>Normal</option>
+                        <option value="1.2">Fast</option>
+                    </select>
+                </div>
+
+                <div id="immersive-content" class="immersive-text">
+                    <!-- Content will be loaded from chapters dynamically -->
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2023 Akua Agyeiwaa | <a href="https://digitalhumanities.unl.edu" target="_blank">UNL Digital Humanities</a></p>
+    </footer>
+<!-- Add to body -->
+<div class="share-buttons">
+    <button class="share-button" onclick="share('twitter')">𝕏</button>
+    <button class="share-button" onclick="share('facebook')">f</button>
+    <button class="share-button" onclick="share('linkedin')">in</button>
+</div>
+
+
+
+<!-- Add to body -->
+<div class="font-controls">
+    <button class="font-button" onclick="adjustFontSize('decrease')">A-</button>
+    <button class="font-button" onclick="adjustFontSize('reset')">A</button>
+    <button class="font-button" onclick="adjustFontSize('increase')">A+</button>
+</div>
+
+<!-- Add to body -->
+<button class="analytics-toggle" onclick="toggleAnalyticsDashboard()">📊 Analytics</button>
+<div class="analytics-dashboard" id="analyticsDashboard">
+    <h3>Reading Analytics</h3>
+    <div class="analytics-chart" id="readingProgress"></div>
+    <div class="analytics-chart" id="timeSpent"></div>
+    <div class="analytics-chart" id="popularChapters"></div>
+</div>
+
+    <script>
+        function openTab(evt, tabName) {
+            var tabContents = document.getElementsByClassName("tab-content");
+            for (var i = 0; i < tabContents.length; i++) {
+                tabContents[i].classList.remove("active");
+            }
+
+            var tabButtons = document.getElementsByClassName("tab-button");
+            for (var i = 0; i < tabButtons.length; i++) {
+                tabButtons[i].classList.remove("active");
+            }
+
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+
+        // Accordion functionality
+        const accordionHeaders = document.querySelectorAll(".accordion-header");
+
+        accordionHeaders.forEach(header => {
+            header.addEventListener("click", function() {
+                this.classList.toggle("active");
+                const content = this.nextElementSibling;
+
+                // Close other open accordions
+                accordionHeaders.forEach(otherHeader => {
+                    if (otherHeader !== this && otherHeader.classList.contains("active")) {
+                        otherHeader.classList.remove("active");
+                        otherHeader.nextElementSibling.classList.remove("active");
+                    }
+                });
+
+                content.classList.toggle("active");
+            });
+        });
+
+        // Previous scripts remain the same
+
+        // Google Translate initialization
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement(
+                {pageLanguage: 'en'},
+                'google_translate_element'
+            );
+        }
+
+        // Read Aloud functionality
+        let speechSynthesis = window.speechSynthesis;
+        let utterance = null;
+        let currentText = "";
+
+        function startReading() {
+            if (utterance && speechSynthesis.speaking) {
+                speechSynthesis.resume();
+            } else {
+                currentText = document.getElementById('immersive-content').textContent;
+                utterance = new SpeechSynthesisUtterance(currentText);
+                speechSynthesis.speak(utterance);
+            }
+        }
+
+        function pauseReading() {
+            if (speechSynthesis.speaking) {
+                speechSynthesis.pause();
+            }
+        }
+
+        function stopReading() {
+            speechSynthesis.cancel();
+        }
+
+        function changeReadingSpeed(speed) {
+            if (utterance) {
+                utterance.rate = parseFloat(speed);
+                if (speechSynthesis.speaking) {
+                    stopReading();
+                    startReading();
+                }
+            }
+        }
+
+        // Search functionality
+        function searchText() {
+            const searchTerm = document.getElementById('search-box').value.toLowerCase();
+            const content = document.getElementById('immersive-content').textContent;
+            const results = [];
+
+            // Simple search implementation
+            const words = content.split(' ');
+            for (let i = 0; i < words.length; i++) {
+                if (words[i].toLowerCase().includes(searchTerm)) {
+                    results.push({
+                        word: words[i],
+                        context: words.slice(Math.max(0, i-5), Math.min(words.length, i+5)).join(' ')
+                    });
+                }
+            }
+
+            // Display results
+            const resultsDiv = document.getElementById('search-results');
+            if (results.length > 0) {
+                resultsDiv.innerHTML = results.map(result =>
+                    `<p>...${result.context.replace(
+                        new RegExp(searchTerm, 'gi'),
+                        match => `<span class="highlight">${match}</span>`
+                    )}...</p>`
+                ).join('');
+            } else {
+                resultsDiv.innerHTML = '<p>No results found.</p>';
+            }
+        }
+
+        // Function to load chapter content into immersive reader
+        function loadChapterToImmersive(chapterContent) {
+            document.getElementById('immersive-content').innerHTML = chapterContent;
+        }
+
+        // Add this to your accordion click handlers
+        document.querySelectorAll('.accordion-header').forEach(button => {
+            button.addEventListener('click', () => {
+                // Previous accordion functionality remains
+
+                // Load content to immersive reader when chapter is opened
+                const content = button.nextElementSibling.innerHTML;
+                loadChapterToImmersive(content);
+            });
+        });
+    </script>
+    <!-- Add to scripts -->
+<script>
+    function toggleTheme() {
+        const body = document.querySelector('body');
+        const icon = document.getElementById('theme-icon');
+        if (body.getAttribute('data-theme') === 'dark') {
+            body.setAttribute('data-theme', 'light');
+            icon.textContent = '🌙';
+        } else {
+            body.setAttribute('data-theme', 'dark');
+            icon.textContent = '☀️';
+        }
+    }
+</script>
+<!-- Add to scripts -->
+<script>
+    window.onscroll = function() {
+        let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        let scrolled = (winScroll / height) * 100;
+        document.getElementById("readingProgress").style.width = scrolled + "%";
+    };
+</script>
+<!-- Add to scripts -->
+<script>
+    function share(platform) {
+        const url = encodeURIComponent(window.location.href);
+        const title = encodeURIComponent(document.title);
+        let shareUrl;
+
+        switch(platform) {
+            case 'twitter':
+                shareUrl = `https://twitter.com/intent/tweet?url=${url}&text=${title}`;
+                break;
+            case 'facebook':
+                shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+                break;
+            case 'linkedin':
+                shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${url}`;
+                break;
+        }
+        window.open(shareUrl, '_blank');
+    }
+</script>
+<!-- Add to scripts -->
+
+<!-- Add to scripts -->
+<script>
+    let currentFontSize = 16;
+    function adjustFontSize(action) {
+        const content = document.getElementById('immersive-content');
+        switch(action) {
+            case 'increase':
+                currentFontSize = Math.min(currentFontSize + 2, 24);
+                break;
+            case 'decrease':
+                currentFontSize = Math.max(currentFontSize - 2, 12);
+                break;
+            case 'reset':
+                currentFontSize = 16;
+                break;
+        }
+        content.style.fontSize = `${currentFontSize}px`;
+    }
+</script>
+<!-- Add to scripts section -->
+<script>
+// Analytics Tracking Class
+class NovelAnalytics {
+    constructor() {
+        this.startTime = new Date();
+        this.readingStats = JSON.parse(localStorage.getItem('readingStats')) || {
+            chaptersRead: {},
+            totalTimeSpent: 0,
+            lastVisit: null,
+            readingProgress: {},
+            bookmarks: []
+        };
+        this.currentChapter = null;
+        this.isReading = false;
+        this.setupTracking();
+    }
+
+    setupTracking() {
+        // Track chapter views
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', () => {
+                this.trackChapterView(header.textContent);
+            });
+        });
+
+        // Track reading time
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                this.pauseReading();
+            } else {
+                this.resumeReading();
+            }
+        });
+
+        // Track scroll progress
+        window.addEventListener('scroll', this.debounce(() => {
+            this.trackReadingProgress();
+        }, 500));
+
+        // Save stats before user leaves
+        window.addEventListener('beforeunload', () => {
+            this.saveStats();
+        });
+    }
+
+    trackChapterView(chapterName) {
+        this.currentChapter = chapterName;
+        if (!this.readingStats.chaptersRead[chapterName]) {
+            this.readingStats.chaptersRead[chapterName] = {
+                views: 0,
+                timeSpent: 0,
+                lastRead: null
+            };
+        }
+        this.readingStats.chaptersRead[chapterName].views++;
+        this.readingStats.chaptersRead[chapterName].lastRead = new Date().toISOString();
+
+        // Send to Google Analytics
+        gtag('event', 'chapter_view', {
+            'chapter_name': chapterName
+        });
+    }
+
+    trackReadingProgress() {
+        if (!this.currentChapter || !this.isReading) return;
+
+        const scrollPos = window.scrollY;
+        const windowHeight = window.innerHeight;
+        const docHeight = document.documentElement.scrollHeight;
+        const progress = (scrollPos / (docHeight - windowHeight)) * 100;
+
+        this.readingStats.readingProgress[this.currentChapter] = Math.round(progress);
+
+        // Send to Google Analytics
+        gtag('event', 'reading_progress', {
+            'chapter_name': this.currentChapter,
+            'progress': Math.round(progress)
+        });
+    }
+
+    startReading() {
+        this.isReading = true;
+        this.startTime = new Date();
+    }
+
+    pauseReading() {
+        if (!this.isReading) return;
+        this.isReading = false;
+        this.updateTimeSpent();
+    }
+
+    resumeReading() {
+        this.startReading();
+    }
+
+    updateTimeSpent() {
+        if (!this.currentChapter) return;
+
+        const timeSpent = (new Date() - this.startTime) / 1000; // in seconds
+        this.readingStats.chaptersRead[this.currentChapter].timeSpent += timeSpent;
+        this.readingStats.totalTimeSpent += timeSpent;
+
+        // Send to Google Analytics
+        gtag('event', 'reading_time', {
+            'chapter_name': this.currentChapter,
+            'time_spent': timeSpent
+        });
+    }
+
+    saveStats() {
+        this.readingStats.lastVisit = new Date().toISOString();
+        localStorage.setItem('readingStats', JSON.stringify(this.readingStats));
+    }
+
+    getAnalytics() {
+        return {
+            totalTimeSpent: this.formatTime(this.readingStats.totalTimeSpent),
+            mostReadChapter: this.getMostReadChapter(),
+            averageProgress: this.getAverageProgress(),
+            chapterStats: this.readingStats.chaptersRead
+        };
+    }
+
+    getMostReadChapter() {
+        return Object.entries(this.readingStats.chaptersRead)
+            .sort(([,a], [,b]) => b.views - a.views)[0]?.[0] || 'None';
+    }
+
+    getAverageProgress() {
+        const progresses = Object.values(this.readingStats.readingProgress);
+        return progresses.length
+            ? Math.round(progresses.reduce((a, b) => a + b, 0) / progresses.length)
+            : 0;
+    }
+
+    formatTime(seconds) {
+        const hours = Math.floor(seconds / 3600);
+        const minutes = Math.floor((seconds % 3600) / 60);
+        return `${hours}h ${

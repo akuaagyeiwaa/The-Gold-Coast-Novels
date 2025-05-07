@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gold Coast Novels</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+    header {
+      background: #DAA520; /* Darker gold shade */
+      color: #fff;
+      padding: 1rem 0;
+      text-align: center;
+    }
+    nav {
+      background: #444;
+      display: flex;
+      justify-content: center;
+      padding: 0.5rem 0;
+    }
+    nav a {
+      color: #fff;
+      margin: 0 1rem;
+      text-decoration: none;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #444;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+      z-index: 1;
+    }
+    .dropdown-content a {
+      color: #fff;
+      padding: 0.5rem 1rem;
+      text-decoration: none;
+      display: block;
+    }
+    .dropdown-content a:hover {
+      background-color: #555;
+    }
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+    .hero {
+      background: #F4C430; /* Lighter gold shade */
+      padding: 2rem;
+      text-align: center;
+    }
+    .about {
+      padding: 2rem;
+    }
+    footer {
+      background: #333;
+      color: #fff;
+      text-align: center;
+      padding: 1rem 0;
+      margin-top: 2rem;
+    }
+    footer a {
+      color: #fff;
+      text-decoration: none;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+    button {
+      margin: 1rem 0;
+      padding: 0.5rem 1rem;
+      background: #DAA520;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #B8860B;
+    }
+  </style>
+
+<!-- Add to head -->
+<style>
+    .font-controls {
+        position: fixed;
+        right: 20px;
+        bottom: 20px;
+        background: var(--secondary-bg);
+        padding: 10px;
+        border-radius: 5px;
+        display: flex;
+        gap: 10px;
+    }
+
+    .font-button {
+        padding: 5px 10px;
+        background: var(--accent-color);
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+        color: white;
+    }
+</style>
+
+<!-- Add to head section -->
+<style>
+    .analytics-dashboard {
+        position: fixed;
+        right: 20px;
+        bottom: 80px;
+        background: var(--secondary-bg);
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        display: none; /* Hidden by default */
+        z-index: 1000;
+    }
+
+    .analytics-toggle {
+        position: fixed;
+        right: 20px;
+        bottom: 20px;
+        padding: 10px;
+        background: var(--accent-color);
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .analytics-chart {
+        margin: 10px 0;
+        padding: 10px;
+        background: white;
+        border-radius: 5px;
+    }
+</style>
+
+<!-- Add this in your <head> tag before closing </head> -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=YOUR-GA4-ID"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'YOUR-GA4-ID', {
+    'page_title': 'Marita Novel',
+    'custom_map': {
+      'dimension1': 'chapter_name',
+      'dimension2': 'reading_progress',
+      'metric1': 'reading_time'
+    }
+  });
+</script>
+</head>
+<body>
+  <header>
+    <h1>Gold Coast Novels</h1>
+  </header>
+  <nav>
+    <a href="index.html">Home</a>
+    <div class="dropdown">
+      <a href="#">The Novels</a>
+      <div class="dropdown-content">
+        <a href="marita.html">Marita</a>
+        <a href="ethiopia_unbound.html">Ethiopia Unbound</a>
+        <a href="the_anglo_fanti.html">The Anglo-Fanti</a>
+        <a href="eighteenpence.html">Eighteenpence</a>
+      </div>
+    </div>
+    <a href="immersion-reader.html">Immersion Reader</a>
+    <a href="translate.html">Translate</a>
+    <a href="maps-timeline.html">Maps and Timeline</a>
+    <a href="about.html">About</a>
+  </nav>
+  <main>
+    <section class="hero">
+      <h2>Welcome to the Gold Coast Novels Project</h2>
+      <p id="welcome-message">Discover the rich literary heritage of the Gold Coast through these timeless novels.</p>
+      <button onclick="readAloud()">Read Aloud</button>
+      <div id="google_translate_element"></div>
+    </section>
+    <section class="about">
+      <h2>About</h2>
+      <p>This website is dedicated to showcasing novels from the Gold Coast, highlighting their cultural and historical significance.</p>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2023 Akua Agyeiwaa | <a href="https://digitalhumanities.unl.edu" target="_blank">UNL Digital Humanities</a></p>
+  </footer>
+
+<!-- Add to body -->
+<div class="font-controls">
+    <button class="font-button" onclick="adjustFontSize('decrease')">A-</button>
+    <button class="font-button" onclick="adjustFontSize('reset')">A</button>
+    <button class="font-button" onclick="adjustFontSize('increase')">A+</button>
+</div>
+
+<!-- Add to body -->
+<button class="analytics-toggle" onclick="toggleAnalyticsDashboard()">📊 Analytics</button>
+<div class="analytics-dashboard" id="analyticsDashboard">
+    <h3>Reading Analytics</h3>
+    <div class="analytics-chart" id="readingProgress"></div>
+    <div class="analytics-chart" id="timeSpent"></div>
+    <div class="analytics-chart" id="popularChapters"></div>
+</div>
+  <script>
+    function readAloud() {
+      const message = document.getElementById('welcome-message').textContent;
+      const speech = new SpeechSynthesisUtterance(message);
+      window.speechSynthesis.speak(speech);
+    }
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+    }
+
+    function calculateReadingTime() {
+        const text = document.getElementById('immersive-content').textContent;
+        const wordsPerMinute = 200; // Average reading speed
+        const words = text.trim().split(/\s+/).length;
+        const time = Math.ceil(words / wordsPerMinute);
+
+        const readingTime = document.createElement('div');
+        readingTime.className = 'reading-time';
+        readingTime.innerHTML = `Estimated reading time: ${time} minute${time !== 1 ? 's' : ''}`;
+        document.getElementById('immersive-content').prepend(readingTime);
+    }
+  </script>
+
+<!-- Add to scripts -->
+<script>
+    let currentFontSize = 16;
+    function adjustFontSize(action) {
+        const content = document.getElementById('immersive-content');
+        switch(action) {
+            case 'increase':
+                currentFontSize = Math.min(currentFontSize + 2, 24);
+                break;
+            case 'decrease':
+                currentFontSize = Math.max(currentFontSize - 2, 12);
+                break;
+            case 'reset':
+                currentFontSize = 16;
+                break;
+        }
+        content.style.fontSize = `${currentFontSize}px`;
+    }
+</script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+<!-- Add to scripts section -->
+<script>
+// Analytics Tracking Class
+class NovelAnalytics {
+    constructor() {
+        this.startTime = new Date();
+        this.readingStats = JSON.parse(localStorage.getItem('readingStats')) || {
+            chaptersRead: {},
+            totalTimeSpent: 0,
+            lastVisit: null,
+            readingProgress: {},
+            bookmarks: []
+        };
+        this.currentChapter = null;
+        this.isReading = false;
+        this.setupTracking();
+    }
+
+    setupTracking() {
+        // Track chapter views
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', () => {
+                this.trackChapterView(header.textContent);
+            });
+        });
+
+        // Track reading time
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                this.pauseReading();
+            } else {
+                this.resumeReading();
+            }
+        });
+
+        // Track scroll progress
+        window.addEventListener('scroll', this.debounce(() => {
+            this.trackReadingProgress();
+        }, 500));
+
+        // Save stats before user leaves
+        window.addEventListener('beforeunload', () => {
+            this.saveStats();
+        });
+    }
+
+    trackChapterView(chapterName) {
+        this.currentChapter = chapterName;
+        if (!this.readingStats.chaptersRead[chapterName]) {
+            this.readingStats.chaptersRead[chapterName] = {
+                views: 0,
+                timeSpent: 0,
+                lastRead: null
+            };
+        }
+        this.readingStats.chaptersRead[chapterName].views++;
+        this.readingStats.chaptersRead[chapterName].lastRead = new Date().toISOString();
+
+        // Send to Google Analytics
+        gtag('event', 'chapter_view', {
+            'chapter_name': chapterName
+        });
+    }
+
+    trackReadingProgress() {
+        if (!this.currentChapter || !this.isReading) return;
+
+        const scrollPos = window.scrollY;
+        const windowHeight = window.innerHeight;
+        const docHeight = document.documentElement.scrollHeight;
+        const progress = (scrollPos / (docHeight - windowHeight)) * 100;
+
+        this.readingStats.readingProgress[this.currentChapter] = Math.round(progress);
+
+        // Send to Google Analytics
+        gtag('event', 'reading_progress', {
+            'chapter_name': this.currentChapter,
+            'progress': Math.round(progress)
+        });
+    }
+
+    startReading() {
+        this.isReading = true;
+        this.startTime = new Date();
+    }
+
+    pauseReading() {
+        if (!this.isReading) return;
+        this.isReading = false;
+        this.updateTimeSpent();
+    }
+
+    resumeReading() {
+        this.startReading();
+    }
+
+    updateTimeSpent() {
+        if (!this.currentChapter) return;
+
+        const timeSpent = (new Date() - this.startTime) / 1000; // in seconds
+        this.readingStats.chaptersRead[this.currentChapter].timeSpent += timeSpent;
+        this.readingStats.totalTimeSpent += timeSpent;
+
+        // Send to Google Analytics
+        gtag('event', 'reading_time', {
+            'chapter_name': this.currentChapter,
+            'time_spent': timeSpent
+        });
+    }
+
+    saveStats() {
+        this.readingStats.lastVisit = new Date().toISOString();
+        localStorage.setItem('readingStats', JSON.stringify(this.readingStats));
+    }
+
+    getAnalytics() {
+        return {
+            totalTimeSpent: this.formatTime(this.readingStats.totalTimeSpent),
+            mostReadChapter: this.getMostReadChapter(),
+            averageProgress: this.getAverageProgress(),
+            chapterStats: this.readingStats.chaptersRead
+        };
+    }
+
+    getMostReadChapter() {
+        return Object.entries(this.readingStats.chaptersRead)
+            .sort(([,a], [,b]) => b.views - a.views)[0]?.[0] || 'None';
+    }
+
+    getAverageProgress() {
+        const progresses = Object.values(this.readingStats.readingProgress);
+        return progresses.length
+            ? Math.round(progresses.reduce((a, b) => a + b, 0) / progresses.length)
+            : 0;
+    }
+
+    formatTime(seconds) {
+        const hours = Math.floor(seconds / 3600);
+        const minutes = Math.floor((seconds % 3600) / 60);
+        return `${hours}h ${minutes}m`;
+    }
+
+    debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+            const later = () => {
+                clearTimeout(timeout);
+                func(...args);
+            };
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+        };
+    }
+}
+
+// Initialize analytics
+const analytics = new NovelAnalytics();
+
+// Dashboard toggle function
+function toggleAnalyticsDashboard() {
+    const dashboard = document.getElementById('analyticsDashboard');
+    const isHidden = dashboard.style.display === 'none';
+    dashboard.style.display = isHidden ? 'block' : 'none';
+
+    if (isHidden) {
+        updateDashboard();
+    }
+}
+
+// Update dashboard with current stats
+function updateDashboard() {
+    const stats = analytics.getAnalytics();
+    const dashboard = document.getElementById('analyticsDashboard');
+
+    // Reading Progress Chart
+    document.getElementById('readingProgress').innerHTML = `
+        <h4>Overall Progress</h4>
+        <div style="background: #eee; height: 20px; border-radius: 10px;">
+            <div style="background: var(--accent-color); width: ${stats.averageProgress}%;
+                 height: 100%; border-radius: 10px;">
+            </div>
+        </div>
+        <p>${stats.averageProgress}% Complete</p>
+    `;
+
+    // Time Spent
+    document.getElementById('timeSpent').innerHTML = `
+        <h4>Reading Time</h4>
+        <p>Total: ${stats.totalTimeSpent}</p>
+        <p>Most Read: ${stats.mostReadChapter}</p>
+    `;
+
+    // Popular Chapters
+    const popularChapters = Object.entries(stats.chapterStats)
+        .sort(([,a], [,b]) => b.views - a.views)
+        .slice(0, 5);
+
+    document.getElementById('popularChapters').innerHTML = `
+        <h4>Popular Chapters</h4>
+        ${popularChapters.map(([chapter, data]) => `
+            <div>
+                <p>${chapter}: ${data.views} views (${analytics.formatTime(data.timeSpent)})</p>
+            </div>
+        `).join('')}
+    `;
+}
+
+// Add to your chapter open function
+function openChapter(chapterNumber) {
+    // Existing chapter opening code...
+
+    // Track chapter view
+    gtag('event', 'chapter_open', {
+        'chapter_number': chapterNumber
+    });
+}
+
+// Add to your read aloud function
+function startReading() {
+    // Existing read aloud code...
+
+    // Track read aloud usage
+    gtag('event', 'read_aloud_start', {
+        'chapter_name': currentChapter
+    });
+}
+
+// Add to your search function
+function searchText() {
+    // Existing search code...
+
+    // Track search
+    gtag('event', 'search', {
+        'search_term': searchTerm
+    });
+}
+</script>
+</body>
+</html>
