@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Immersion Reader - Gold Coast Novels</title>
+    <style>
+        .novel-selector {
+            margin: 2rem 0;
+            padding: 1rem;
+            background: #f5f5f5;
+            border-radius: 4px;
+        }
+        .novel-selector select {
+            padding: 0.5rem;
+            width: 200px;
+        }
+        #immersive-content {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        .reading-controls {
+            position: sticky;
+            top: 0;
+            background: white;
+            padding: 1rem 0;
+            border-bottom: 1px solid #eee;
+        }
+    </style>
+</head>
+<body>
+    <div id="immersive-content">
+        <div class="novel-selector">
+            <h2>Select a Novel</h2>
+            <select id="novelSelect" onchange="loadNovel()">
+                <option value="">Choose a novel...</option>
+                <option value="marita">Marita</option>
+                <option value="ethiopia_unbound">Ethiopia Unbound</option>
+                <option value="the_anglo_fanti">The Anglo-Fanti</option>
+                <option value="eighteenpence">Eighteenpence</option>
+            </select>
+        </div>
+
+        <div class="reading-controls">
+            <button onclick="adjustFontSize('decrease')">A-</button>
+            <button onclick="adjustFontSize('reset')">A</button>
+            <button onclick="adjustFontSize('increase')">A+</button>
+            <button onclick="readAloud()">Read Aloud</button>
+        </div>
+
+        <div id="novel-content">
+            <p>Please select a novel to begin reading...</p>
+        </div>
+    </div>
+
+    <script>
+        function loadNovel() {
+            const select = document.getElementById('novelSelect');
+            const novelContent = document.getElementById('novel-content');
+            const selectedNovel = select.value;
+
+            if (selectedNovel) {
+                // Here you would fetch the novel content from your server
+                fetch(`/novels/${selectedNovel}.json`)
+                    .then(response => response.json())
+                    .then(data => {
+                        novelContent.innerHTML = data.content;
+                        calculateReadingTime();
+                        // Track chapter view in analytics
+                        if (typeof analytics !== 'undefined') {
+                            analytics.trackChapterView(data.title);
+                            analytics.startReading();
+                        }
+                    })
+                    .catch(error => {
+                        novelContent.innerHTML = '<p>Error loading novel content. Please try again.</p>';
+                        console.error('Error:', error);
+                    });
+            }
+        }
+
+        // Your existing reading time and font size adjustment functions here
+    </script>
+</body>
+</html>
