@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gold Coast Novels - Maps & Timeline</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .tab-container {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .tabs {
+            display: flex;
+            background: #f8f9fa;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .tab-button {
+            padding: 15px 25px;
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .tab-button:hover {
+            background-color: #e9ecef;
+        }
+
+        .tab-button.active {
+            background-color: white;
+            border-bottom: 3px solid #007bff;
+            font-weight: bold;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 20px;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .map-container {
+            height: 500px;
+            background-color: #e9ecef;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .timeline-container {
+            margin-top: 20px;
+        }
+
+        .location-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .location-item {
+            padding: 10px;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .novel-selector {
+            margin-bottom: 20px;
+        }
+
+        select {
+            padding: 8px;
+            font-size: 16px;
+            width: 200px;
+            margin-bottom: 20px;
+        }
+
+        .placeholder-text {
+            text-align: center;
+            color: #6c757d;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="novel-selector">
+            <select id="novelSelect" onchange="changeNovel()">
+                <option value="">Select a Novel...</option>
+                <option value="marita">Marita</option>
+                <option value="ethiopia-unbound">Ethiopia Unbound</option>
+                <option value="the-anglo-fanti">The Anglo-Fanti</option>
+                <option value="eighteenpence">Eighteenpence</option>
+            </select>
+        </div>
+
+        <div class="tab-container">
+            <div class="tabs">
+                <button class="tab-button active" onclick="openTab(event, 'mapTab')">Map View</button>
+                <button class="tab-button" onclick="openTab(event, 'timelineTab')">Timeline</button>
+                <button class="tab-button" onclick="openTab(event, 'locationsTab')">Locations</button>
+                <button class="tab-button" onclick="openTab(event, 'historicalTab')">Historical Context</button>
+            </div>
+
+            <div id="mapTab" class="tab-content active">
+                <div class="map-container">
+                    <p class="placeholder-text">Map content will be loaded here.<br>
+                    (Google Earth integration pending)</p>
+                </div>
+            </div>
+
+            <div id="timelineTab" class="tab-content">
+                <div class="timeline-container">
+                    <p class="placeholder-text">Timeline events will be displayed here.<br>
+                    Select a novel to view its timeline.</p>
+                </div>
+            </div>
+
+            <div id="locationsTab" class="tab-content">
+                <ul class="location-list">
+                    <p class="placeholder-text">Location details will be listed here.<br>
+                    Select a novel to view its locations.</p>
+                </ul>
+            </div>
+
+            <div id="historicalTab" class="tab-content">
+                <p class="placeholder-text">Historical context and information will be shown here.<br>
+                Select a novel to view historical details.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openTab(evt, tabName) {
+            const tabContents = document.getElementsByClassName("tab-content");
+            for (let content of tabContents) {
+                content.classList.remove("active");
+            }
+
+            const tabButtons = document.getElementsByClassName("tab-button");
+            for (let button of tabButtons) {
+                button.classList.remove("active");
+            }
+
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+
+        function changeNovel() {
+            const novel = document.getElementById("novelSelect").value;
+            if (novel) {
+                // This function will be expanded later to load novel-specific data
+                console.log(`Selected novel: ${novel}`);
+            }
+        }
+    </script>
+</body>
+</html>
