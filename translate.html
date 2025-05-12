@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gold Coast Novels - Translation</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #F4D03F; /* A shade of gold */
+            min-height: 100vh;
+        }
+
+        #translator-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            background-color: rgba(244, 208, 63, 0.3); /* Lighter shade of gold */
+        }
+
+        .controls {
+            grid-column: 1 / -1;
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .novel-selector {
+            margin-bottom: 1rem;
+        }
+
+        .novel-selector select {
+            padding: 0.5rem;
+            width: 200px;
+            margin-left: 1rem;
+        }
+
+        .content-panel {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            height: 600px;
+            overflow-y: auto;
+        }
+
+        .original-text {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        #loading {
+            text-align: center;
+            padding: 2rem;
+            display: none;
+        }
+
+        .language-selector {
+            margin: 1rem 0;
+        }
+
+        .language-selector select {
+            padding: 0.5rem;
+            width: 200px;
+            margin-left: 1rem;
+        }
+
+        .translated-content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+    </style>
+    <!-- Add Google Translate API Script -->
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</head>
+<body>
+    <div id="translator-content">
+        <div class="controls">
+            <div class="novel-selector">
+                <label for="novelSelect">Select Novel:</label>
+                <select id="novelSelect" onchange="loadNovel()">
+                    <option value="">Choose a novel...</option>
+                    <option value="marita.html">Marita</option>
+                    <option value="ethiopia-unbound.html">Ethiopia Unbound</option>
+                    <option value="the-anglo-fanti.html">The Anglo-Fanti</option>
+                    <option value="eighteenpence.html">Eighteenpence</option>
+                </select>
+            </div>
+            <div class="language-selector">
+                <label for="google_translate_element">Translate to:</label>
+                <div id="google_translate_element"></div>
+            </div>
+        </div>
+
+        <div class="content-panel">
+            <div id="loading">Loading...</div>
+            <div id="original-content" class="original-text">
+                Please select a novel to begin...
+            </div>
+        </div>
+
+        <div class="content-panel">
+            <div id="translated-content" class="translated-content">
+                Translation will appear here...
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
+        }
+
+        async function loadNovel() {
+            const select = document.getElementById('novelSelect');
+            const selectedNovel = select.value;
+
+            if (!selectedNovel) return;
+
+            document.getElementById('loading').style.display = 'block';
+            document.getElementById('original-content').style.display = 'none';
+
+            try {
+                const response = await fetch(selectedNovel);
+                const html = await response.text();
+
+                // Create a temporary container to parse the HTML
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+
+                // Extract the main content - adjust the selector based on your HTML structure
+                const content = doc.querySelector('body').innerHTML;
+
+                document.getElementById('original-content').innerHTML = content;
+
+                // Trigger Google Translate
+                if (window.location.hash) {
+                    if (window.location.hash.includes('googtrans')) {
+                        const currentLang = window.location.hash.split('/')[2];
+                        const googleFrame = document.querySelector('.goog-te-combo');
+                        if (googleFrame) {
+                            googleFrame.value = currentLang;
+                            googleFrame.dispatchEvent(new Event('change'));
+                        }
+                    }
+                }
+
+            } catch (error) {
+                console.error('Error loading novel:', error);
+                document.getElementById('original-content').innerHTML =
+                    '<p>Error loading novel. Please try again.</p>';
+            }
+
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('original-content').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
