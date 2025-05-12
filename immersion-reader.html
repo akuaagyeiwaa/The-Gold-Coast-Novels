@@ -5,16 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Immersion Reader - Gold Coast Novels</title>
     <style>
-        .novel-selector {
-            margin: 2rem 0;
-            padding: 1rem;
-            background: #f5f5f5;
-            border-radius: 4px;
-        }
-        .novel-selector select {
-            padding: 0.5rem;
-            width: 200px;
-        }
         #immersive-content {
             max-width: 800px;
             margin: 2rem auto;
@@ -26,61 +16,154 @@
             background: white;
             padding: 1rem 0;
             border-bottom: 1px solid #eee;
+            z-index: 100;
+        }
+        .novel-selector {
+            margin-bottom: 1rem;
+        }
+        .novel-selector select {
+            padding: 0.5rem;
+            width: 200px;
+        }
+        .content-area {
+            line-height: 1.8;
+            font-size: 18px;
+        }
+        .reading-time {
+            background: #f0f0f0;
+            padding: 0.5rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+        .font-controls {
+            margin: 1rem 0;
+        }
+        .font-controls button {
+            margin-right: 0.5rem;
+            padding: 0.5rem 1rem;
+        }
+        .loading {
+            text-align: center;
+            padding: 2rem;
+            display: none;
         }
     </style>
 </head>
 <body>
     <div id="immersive-content">
-        <div class="novel-selector">
-            <h2>Select a Novel</h2>
-            <select id="novelSelect" onchange="loadNovel()">
-                <option value="">Choose a novel...</option>
-                <option value="marita">Marita</option>
-                <option value="ethiopia_unbound">Ethiopia Unbound</option>
-                <option value="the_anglo_fanti">The Anglo-Fanti</option>
-                <option value="eighteenpence">Eighteenpence</option>
-            </select>
-        </div>
-
         <div class="reading-controls">
-            <button onclick="adjustFontSize('decrease')">A-</button>
-            <button onclick="adjustFontSize('reset')">A</button>
-            <button onclick="adjustFontSize('increase')">A+</button>
-            <button onclick="readAloud()">Read Aloud</button>
+            <div class="novel-selector">
+                <label for="novelSelect">Select Novel:</label>
+                <select id="novelSelect" onchange="loadNovel()">
+                    <option value="">Choose a novel...</option>
+                    <option value="marita.html">Marita</option>
+                    <option value="ethiopia-unbound.html">Ethiopia Unbound</option>
+                    <option value="the-anglo-fanti.html">The Anglo-Fanti</option>
+                    <option value="eighteenpence.html">Eighteenpence</option>
+                </select>
+            </div>
+
+            <div class="font-controls">
+                <button onclick="adjustFontSize('decrease')">A-</button>
+                <button onclick="adjustFontSize('reset')">A</button>
+                <button onclick="adjustFontSize('increase')">A+</button>
+                <button onclick="toggleReadAloud()" id="readAloudBtn">Read Aloud</button>
+            </div>
         </div>
 
-        <div id="novel-content">
+        <div id="loading" class="loading">Loading...</div>
+        <div id="content-area" class="content-area">
             <p>Please select a novel to begin reading...</p>
         </div>
     </div>
 
     <script>
-        function loadNovel() {
+        let currentFontSize = 18;
+        let isReading = false;
+
+        async function loadNovel() {
             const select = document.getElementById('novelSelect');
-            const novelContent = document.getElementById('novel-content');
             const selectedNovel = select.value;
 
-            if (selectedNovel) {
-                // Here you would fetch the novel content from your server
-                fetch(`/novels/${selectedNovel}.json`)
-                    .then(response => response.json())
-                    .then(data => {
-                        novelContent.innerHTML = data.content;
-                        calculateReadingTime();
-                        // Track chapter view in analytics
-                        if (typeof analytics !== 'undefined') {
-                            analytics.trackChapterView(data.title);
-                            analytics.startReading();
-                        }
-                    })
-                    .catch(error => {
-                        novelContent.innerHTML = '<p>Error loading novel content. Please try again.</p>';
-                        console.error('Error:', error);
-                    });
+            if (!selectedNovel) return;
+
+            document.getElementById('loading').style.display = 'block';
+            document.getElementById('content-area').style.display = 'none';
+
+            try {
+                const response = await fetch(selectedNovel);
+                const html = await response.text();
+
+                // Create a temporary container to parse the HTML
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+
+                // Extract the main content - adjust the selector based on your HTML structure
+                const content = doc.querySelector('body').innerHTML;
+
+                document.getElementById('content-area').innerHTML = content;
+                calculateReadingTime();
+
+                // Track in analytics if available
+                if (typeof analytics !== 'undefined') {
+                    analytics.trackNovelView(selectedNovel);
+                }
+
+            } catch (error) {
+                console.error('Error loading novel:', error);
+                document.getElementById('content-area').innerHTML =
+                    '<p>Error loading novel. Please try again.</p>';
             }
+
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('content-area').style.display = 'block';
         }
 
-        // Your existing reading time and font size adjustment functions here
+        function calculateReadingTime() {
+            const content = document.getElementById('content-area').textContent;
+            const wordsPerMinute = 200;
+            const words = content.trim().split(/\s+/).length;
+            const minutes = Math.ceil(words / wordsPerMinute);
+
+            const timeDisplay = document.createElement('div');
+            timeDisplay.className = 'reading-time';
+            timeDisplay.innerHTML = `Estimated reading time: ${minutes} minute${minutes !== 1 ? 's' : ''}`;
+
+            const existingTime = document.querySelector('.reading-time');
+            if (existingTime) existingTime.remove();
+
+            document.getElementById('content-area').insertAdjacentElement('beforebegin', timeDisplay);
+        }
+
+        function adjustFontSize(action) {
+            const contentArea = document.getElementById('content-area');
+            switch(action) {
+                case 'increase':
+                    currentFontSize = Math.min(currentFontSize + 2, 24);
+                    break;
+                case 'decrease':
+                    currentFontSize = Math.max(currentFontSize - 2, 12);
+                    break;
+                case 'reset':
+                    currentFontSize = 18;
+                    break;
+            }
+            contentArea.style.fontSize = `${currentFontSize}px`;
+        }
+
+        function toggleReadAloud() {
+            if (isReading) {
+                window.speechSynthesis.cancel();
+                isReading = false;
+                document.getElementById('readAloudBtn').textContent = 'Read Aloud';
+            } else {
+                const content = document.getElementById('content-area').textContent;
+                const utterance = new SpeechSynthesisUtterance(content);
+                window.speechSynthesis.speak(utterance);
+                isReading = true;
+                document.getElementById('readAloudBtn').textContent = 'Stop Reading';
+            }
+        }
     </script>
 </body>
 </html>
