@@ -25,33 +25,41 @@
   </button>
 
     <header>
-        <h1>The Anglo-Fanti</h1>
-    </header>
-    <! --Back to Navigation -->
-    <div class="back-nav">
-        <a href="index.html">← Back to Home</a>
+    <h1>The Anglo-Fanti</h1>
+</header>
+
+<!-- Back to Navigation -->
+<div class="back-nav">
+    <a href="index.html">← Back to Home</a>
+</div>
+
+<!-- Main Content -->
+<main>
+    <div class="tools-container">
+        <div id="google_translate_element"></div>
+        <button class="tool-button" onclick="toggleReadAloud()">Toggle Read Aloud</button>
+        <button class="tool-button" onclick="document.getElementById('search-box').focus()">Search in Text</button>
     </div>
-    <! -- Main Content -->
-    <main>
-        <div class="tools-container">
-            <div id="google_translate_element"></div>
-            <button class="tool-button" onclick="toggleReadAloud()">Toggle Read Aloud</button>
-            <button class="tool-button" onclick="document.getElementById('search-box').focus()">Search in Text</button>
+
+    <div class="tab-container">
+        <div class="tabs">
+            <button class="tab-button" onclick="openTab(event, 'author')">Author</button>
+            <button class="tab-button" onclick="openTab(event, 'fulltext')">Full Text</button>
+            <button class="tab-button" onclick="openTab(event, 'themes')">Themes</button>
+            <button class="tab-button" onclick="openTab(event, 'characters')">Characters</button>
+            <button class="tab-button" onclick="openTab(event, 'excerpts')">Excerpts</button>
+            <button class="tab-button" onclick="openTab(event, 'immersive')">Immersive Reader</button>
         </div>
 
-        <div class="tab-container">
-            <div class="tabs">
-                <button class="tab-button " onclick="openTab(event, 'author')"> Author</button>
-                <button class="tab-button" onclick="openTab(event, 'fulltext')">Full Text</button>
-                <button class="tab-button" onclick="openTab(event, 'themes')">Themes</button>
-                <button class="tab-button" onclick="openTab(event, 'characters')">Characters</button>
-                <button class="tab-button" onclick="openTab(event, 'excerpts')">Excerpts</button>
-                <button class="tab-button" onclick="openTab(event, 'immersive')">Immersive Reader</button>
+        <div id="author" class="tab-content">
+            <h2>William Esuman Gwira Sekyi</h2>
+            <div class="author-info">
+                <!-- Add author details here -->
             </div>
+        </div>
+    </div>
+</main>
 
-            <div id="author" class="tab-content">
-                <h2>William Esuman Gwira Sekyi </h2>
-                <div class="author-info">
 
                     <p>Kobina Sekyi, also known as William Esuman Gwira Sekyi (1892–1956), was born on November 1, 1892, in Oguaa, Cape Coast—a town described by Langley as “the cradle of Gold Coast nationalism” (1997, xiv). He was the son of William Gladstone Sackey and Wilhelmina Pieterson. Sekyi received his early education at Mfantsipim School before attending The Queen’s College, the University of London, and later, London’s Innes Court. Despite his British education, he returned to the Gold Coast deeply disillusioned with European culture, describing himself as a “confirmed Anglo-Fanti.” Sekyi was a prominent figure in early nationalist movements and played a significant role in launching and organizing the Gold Coast chapter of the Pan-West African National Congress of British West Africa. Langley (1997) identifies him as “one of the most outstanding and controversial members of the West African nationalist intelligentsia between 1920 and 1952” (xiv). He died in 1956, a year before Ghana attained independence</p>.
 
