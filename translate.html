@@ -4,77 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gold Coast Novels - Translation</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: #F4D03F; /* A shade of gold */
-            min-height: 100vh;
-        }
+    <link rel="stylesheet" href="styles.css">
 
-        #translator-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            background-color: rgba(244, 208, 63, 0.3); /* Lighter shade of gold */
-        }
-
-        .controls {
-            grid-column: 1 / -1;
-            background: white;
-            padding: 1rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .novel-selector {
-            margin-bottom: 1rem;
-        }
-
-        .novel-selector select {
-            padding: 0.5rem;
-            width: 200px;
-            margin-left: 1rem;
-        }
-
-        .content-panel {
-            background: white;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            height: 600px;
-            overflow-y: auto;
-        }
-
-        .original-text {
-            font-size: 16px;
-            line-height: 1.6;
-        }
-
-        #loading {
-            text-align: center;
-            padding: 2rem;
-            display: none;
-        }
-
-        .language-selector {
-            margin: 1rem 0;
-        }
-
-        .language-selector select {
-            padding: 0.5rem;
-            width: 200px;
-            margin-left: 1rem;
-        }
-
-        .translated-content {
-            font-size: 16px;
-            line-height: 1.6;
-        }
-    </style>
     <!-- Add Google Translate API Script -->
     <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </head>
