@@ -1,517 +1,55 @@
+/* Variables */
 :root {
-    /* Light theme defaults */
-    --bg-color-light: #ffffff;
-    --text-color-light: #000000;
-    --accent-color-light: #F4C430;
-    --secondary-bg-light: #f5f5f5;
+    --bg-color: #ffffff;
+    --text-color: #000000;
+    --accent-color: #F4C430;
+    --secondary-bg: #f5f5f5;
 
-    /* Common variables */
     --transition-speed: 0.3s;
     --spacing-large: 1rem;
     --spacing-medium: 0.5rem;
     --border-radius-round: 50%;
-}
-:root {
-    /* Light theme defaults */
-    --bg-color-light: #ffffff;
-    --text-color-light: #000000;
-    --accent-color-light: #F4C430;
-    --secondary-bg-light: #f5f5f5;
-
-    /* Common variables */
-    --transition-speed: 0.3s;
-    --spacing-large: 1rem;
-    --spacing-medium: 0.5rem;
-    --border-radius-round: 50%;
-}
-
-        #immersive-content {
-            max-width: 800px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-        }
-        .reading-controls {
-            position: sticky;
-            top: 0;
-            background: white;
-            padding: 1rem 0;
-            border-bottom: 1px solid #eee;
-            z-index: 100;
-        }
-        .novel-selector {
-            margin-bottom: 1rem;
-        }
-        .novel-selector select {
-            padding: 0.5rem;
-            width: 200px;
-        }
-        .content-area {
-            line-height: 1.8;
-            font-size: 18px;
-        }
-        .reading-time {
-            background: #f0f0f0;
-            padding: 0.5rem;
-            margin: 1rem 0;
-            border-radius: 4px;
-        }
-        .font-controls {
-            margin: 1rem 0;
-        }
-        .font-controls button {
-            margin-right: 0.5rem;
-            padding: 0.5rem 1rem;
-        }
-        .loading {
-            text-align: center;
-            padding: 2rem;
-            display: none;
-        }
-
-
-
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: #F4D03F; /* A shade of gold */
-            min-height: 100vh;
-        }
-
-        #translator-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            background-color: rgba(244, 208, 63, 0.3); /* Lighter shade of gold */
-        }
-
-        .controls {
-            grid-column: 1 / -1;
-            background: white;
-            padding: 1rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .novel-selector {
-            margin-bottom: 1rem;
-        }
-
-        .novel-selector select {
-            padding: 0.5rem;
-            width: 200px;
-            margin-left: 1rem;
-        }
-
-        .content-panel {
-            background: white;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            height: 600px;
-            overflow-y: auto;
-        }
-
-        .original-text {
-            font-size: 16px;
-            line-height: 1.6;
-        }
-
-        #loading {
-            text-align: center;
-            padding: 2rem;
-            display: none;
-        }
-
-        .language-selector {
-            margin: 1rem 0;
-        }
-
-        .language-selector select {
-            padding: 0.5rem;
-            width: 200px;
-            margin-left: 1rem;
-        }
-
-        .translated-content {
-            font-size: 16px;
-            line-height: 1.6;
-        }
-
-
-
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        .tab-container {
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            overflow: hidden;
-        }
-
-        .tabs {
-            display: flex;
-            background: #f8f9fa;
-            border-bottom: 1px solid #dee2e6;
-        }
-
-        .tab-button {
-            padding: 15px 25px;
-            border: none;
-            background: none;
-            cursor: pointer;
-            font-size: 16px;
-            transition: all 0.3s ease;
-        }
-
-        .tab-button:hover {
-            background-color: #e9ecef;
-        }
-
-        /* Distinct colors for each tab button when active */
-        .tab-button.active[onclick*="mapTab"] {
-            background-color: #e8f4f8;
-            border-bottom: 3px solid #2196F3;
-        }
-
-        .tab-button.active[onclick*="timelineTab"] {
-            background-color: #fff3e0;
-            border-bottom: 3px solid #FF9800;
-        }
-
-        .tab-button.active[onclick*="locationsTab"] {
-            background-color: #e8f5e9;
-            border-bottom: 3px solid #4CAF50;
-        }
-
-        .tab-button.active[onclick*="historicalTab"] {
-            background-color: #fce4ec;
-            border-bottom: 3px solid #E91E63;
-        }
-
-        .tab-content {
-            display: none;
-            padding: 20px;
-            min-height: 500px;
-        }
-
-        .tab-content.active {
-            display: block;
-            animation: fadeIn 0.5s ease;
-        }
-
-        /* Distinct background styles for each tab content */
-        #mapTab.tab-content {
-            background: linear-gradient(135deg, #e8f4f8 0%, #ffffff 100%);
-            border-left: 4px solid #2196F3;
-        }
-
-        #timelineTab.tab-content {
-            background: linear-gradient(135deg, #fff3e0 0%, #ffffff 100%);
-            border-left: 4px solid #FF9800;
-        }
-
-        #locationsTab.tab-content {
-            background: linear-gradient(135deg, #e8f5e9 0%, #ffffff 100%);
-            border-left: 4px solid #4CAF50;
-        }
-
-        #historicalTab.tab-content {
-            background: linear-gradient(135deg, #fce4ec 0%, #ffffff 100%);
-            border-left: 4px solid #E91E63;
-        }
-
-        .map-container {
-            height: 500px;
-            background-color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 20px;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .timeline-container {
-            margin-top: 20px;
-        }
-
-        .location-list {
-            list-style: none;
-            padding: 0;
-        }
-
-        .location-item {
-            padding: 10px;
-            border-bottom: 1px solid rgba(0,0,0,0.1);
-            background-color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 8px;
-            border-radius: 4px;
-        }
-
-        .novel-selector {
-            margin-bottom: 20px;
-        }
-
-        select {
-            padding: 8px;
-            font-size: 16px;
-            width: 200px;
-            margin-bottom: 20px;
-            border-radius: 4px;
-            border: 1px solid #dee2e6;
-        }
-
-        .placeholder-text {
-            text-align: center;
-            color: #6c757d;
-            background-color: rgba(255, 255, 255, 0.8);
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-
-
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        .profile-header {
-            background: linear-gradient(135deg, #1a237e 0%, #283593 100%);
-            color: white;
-            padding: 40px 20px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        .tab-container {
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            overflow: hidden;
-        }
-
-        .tabs {
-            display: flex;
-            flex-wrap: wrap;
-            background: #f8f9fa;
-            border-bottom: 1px solid #dee2e6;
-        }
-
-        .tab-button {
-            padding: 15px 25px;
-            border: none;
-            background: none;
-            cursor: pointer;
-            font-size: 16px;
-            transition: all 0.3s ease;
-        }
-
-        .tab-button:hover {
-            background-color: #e9ecef;
-        }
-
-        .tab-button.active {
-            background-color: #fff;
-            border-bottom: 3px solid #1a237e;
-            font-weight: bold;
-        }
-
-        .tab-content {
-            display: none;
-            padding: 20px;
-            animation: fadeIn 0.5s ease;
-        }
-
-        .tab-content.active {
-            display: block;
-        }
-
-        /* Distinct backgrounds for each tab */
-        #overview { background: linear-gradient(135deg, #e3f2fd 0%, #ffffff 100%); }
-        #education { background: linear-gradient(135deg, #e8f5e9 0%, #ffffff 100%); }
-        #research { background: linear-gradient(135deg, #fff3e0 0%, #ffffff 100%); }
-        #publications { background: linear-gradient(135deg, #f3e5f5 0%, #ffffff 100%); }
-        #teaching { background: linear-gradient(135deg, #e0f2f1 0%, #ffffff 100%); }
-        #projects { background: linear-gradient(135deg, #fce4ec 0%, #ffffff 100%); }
-        #awards { background: linear-gradient(135deg, #fff8e1 0%, #ffffff 100%); }
-        #media { background: linear-gradient(135deg, #e8eaf6 0%, #ffffff 100%); }
-
-        .content-card {
-            background: rgba(255, 255, 255, 0.9);
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 15px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-    /* Add these new styles */
-    .photo-gallery {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 20px;
-        padding: 20px;
-    }
-
-    .photo-item {
-        position: relative;
-        overflow: hidden;
-        border-radius: 8px;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        aspect-ratio: 1;
-        cursor: pointer;
-        transition: transform 0.3s ease;
-    }
-
-    .photo-item:hover {
-        transform: scale(1.02);
-    }
-
-    .photo-item img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-
-    .photo-caption {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background: rgba(0, 0, 0, 0.7);
-        color: white;
-        padding: 10px;
-        font-size: 14px;
-        transform: translateY(100%);
-        transition: transform 0.3s ease;
-    }
-
-    .photo-item:hover .photo-caption {
-        transform: translateY(0);
-    }
-
-    /* Modal styles for full-size image view */
-    .modal {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: rgba(0, 0, 0, 0.9);
-        z-index: 1000;
-        cursor: pointer;
-    }
-
-    .modal-content {
-        max-width: 90%;
-        max-height: 90vh;
-        margin: auto;
-        display: block;
-        position: relative;
-        top: 50%;
-        transform: translateY(-50%);
-    }
-
-    .modal-caption {
-        color: white;
-        text-align: center;
-        padding: 20px;
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background: rgba(0, 0, 0, 0.7);
-    }
-
-
-/*  Novels -Styles*/
-/* Theme Variables */
-:root {
-    --bg-color-light: #ffffff;
-    --text-color-light: #000000;
-    --accent-color-light: #DAA520;
-    --secondary-bg-light: #f5f5f5;
-    --transition-speed: 0.3s;
-    --spacing-large: 20px;
-    --spacing-medium: 10px;
-    --border-radius-round: 50%;
+    --nav-bg-color: #DAA520;
+    --link-hover-bg: #444;
+    --font-size-base: 16px;
 }
 
 [data-theme="dark"] {
-    --bg-color-dark: #1a1a1a;
-    --text-color-dark: #ffffff;
-    --accent-color-dark: #F4C430;
-    --secondary-bg-dark: #333;
-
-    --bg-color: var(--bg-color-dark);
-    --text-color: var(--text-color-dark);
-    --accent-color: var(--accent-color-dark);
-    --secondary-bg: var(--secondary-bg-dark);
+    --bg-color: #1a1a1a;
+    --text-color: #ffffff;
+    --accent-color: #F4C430;
+    --secondary-bg: #333;
 }
 
-[data-theme="light"] {
-    --bg-color: var(--bg-color-light);
-    --text-color: var(--text-color-light);
-    --accent-color: var(--accent-color-light);
-    --secondary-bg: var(--secondary-bg-light);
+/* Base Reset & Base Styles */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
 }
 
-/* Base styles */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    font-size: var(--font-size-base);
     line-height: 1.6;
     background-color: var(--bg-color);
     color: var(--text-color);
-    transition: all var(--transition-speed) ease;
+    transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
 }
 
-/* Header Styles */
+/* Header */
 header {
-    background: #DAA520;
+    background: var(--nav-bg-color);
     color: #fff;
     padding: 1rem 0;
     text-align: center;
 }
 
-/* Navigation Styles */
+/* Back Navigation */
 .back-nav {
-    background: #444;
+    background: var(--link-hover-bg);
     padding: 0.5rem 0;
     text-align: left;
 }
@@ -522,13 +60,14 @@ header {
     margin-left: 20px;
     display: inline-block;
     padding: 5px 15px;
+    cursor: pointer;
 }
 
 .back-nav a:hover {
     text-decoration: underline;
 }
 
-/* Tab Styles */
+/* Tabs */
 .tab-container {
     width: 100%;
     margin: 20px 0;
@@ -536,10 +75,10 @@ header {
 
 .tabs {
     display: flex;
-    background: #DAA520;
-    padding: 10px 0 0 0;
-    margin: 0;
+    background: var(--nav-bg-color);
+    padding-top: 10px;
     justify-content: center;
+    margin: 0;
 }
 
 .tab-button {
@@ -549,12 +88,12 @@ header {
     margin: 0 5px;
     cursor: pointer;
     color: white;
-    font-size: 16px;
+    font-size: 1rem;
     border-radius: 5px 5px 0 0;
 }
 
 .tab-button.active {
-    background: #F4C430;
+    background: var(--accent-color);
     color: black;
 }
 
@@ -562,29 +101,10 @@ header {
     display: none;
     height: 40px;
     border: 4px solid #f3f3f3;
-    border-top: 4px solid #DAA520;
+    border-top: 4px solid var(--nav-bg-color);
 }
 
-/* Loading Spinner */
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-.loading-spinner {
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-#translation-loading {
-    text-align: center;
-    padding: 20px;
-}
-
-/* Accordion Styles */
+/* Accordion */
 .accordion {
     width: 100%;
     max-width: 1000px;
@@ -597,7 +117,7 @@ header {
 }
 
 .accordion-header {
-    background: #F4C430;
+    background: var(--accent-color);
     padding: 15px;
     cursor: pointer;
     display: flex;
@@ -606,11 +126,11 @@ header {
     border: none;
     width: 100%;
     text-align: left;
-    font-size: 16px;
+    font-size: 1rem;
 }
 
 .accordion-header:hover {
-    background: #DAA520;
+    background: var(--nav-bg-color);
 }
 
 .accordion-content {
@@ -626,7 +146,7 @@ header {
     padding: 15px;
 }
 
-/* UI Components */
+/* Utilities */
 .theme-toggle {
     position: fixed;
     top: var(--spacing-large);
@@ -639,34 +159,6 @@ header {
     cursor: pointer;
 }
 
-.tools-container {
-    position: fixed;
-    right: 20px;
-    top: 100px;
-    background: #fff;
-    padding: 10px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    z-index: 1000;
-}
-
-.tool-button {
-    display: block;
-    margin: 5px 0;
-    padding: 8px 15px;
-    background: #DAA520;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    width: 100%;
-}
-
-.tool-button:hover {
-    background: #F4C430;
-}
-
-/* Progress Bar */
 .progress-container {
     position: fixed;
     top: 0;
@@ -682,29 +174,6 @@ header {
     width: 0%;
 }
 
-/* Share Buttons */
-.share-buttons {
-    position: fixed;
-    left: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.share-button {
-    padding: 10px;
-    border-radius: 50%;
-    border: none;
-    background: var(--accent-color);
-    cursor: pointer;
-    color: white;
-}
-
-
-
-/* Font Controls */
 .font-controls {
     position: fixed;
     right: 20px;
@@ -723,36 +192,4 @@ header {
     border-radius: 3px;
     cursor: pointer;
     color: white;
-}
-
-/* Analytics Dashboard */
-.analytics-dashboard {
-    position: fixed;
-    right: 20px;
-    bottom: 80px;
-    background: var(--secondary-bg);
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    display: none;
-    z-index: 1000;
-}
-
-.analytics-toggle {
-    position: fixed;
-    right: 20px;
-    bottom: 20px;
-    padding: 10px;
-    background: var(--accent-color);
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.analytics-chart {
-    margin: 10px 0;
-    padding: 10px;
-    background: white;
-    border-radius: 5px;
 }
