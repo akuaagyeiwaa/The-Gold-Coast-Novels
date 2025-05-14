@@ -24,7 +24,7 @@
     --spacing-medium: 0.5rem;
     --border-radius-round: 50%;
 }
-<style>
+
         #immersive-content {
             max-width: 800px;
             margin: 2rem auto;
@@ -67,9 +67,9 @@
             padding: 2rem;
             display: none;
         }
-    </style>
 
-   <style>
+
+
         body {
             margin: 0;
             padding: 0;
@@ -139,9 +139,9 @@
             font-size: 16px;
             line-height: 1.6;
         }
-    </style>
 
-    <style>
+
+
         body {
             margin: 0;
             padding: 0;
@@ -288,9 +288,9 @@
             from { opacity: 0; }
             to { opacity: 1; }
         }
-    </style>
 
-   <style>
+
+
         body {
             margin: 0;
             padding: 0;
@@ -456,7 +456,7 @@
         right: 0;
         background: rgba(0, 0, 0, 0.7);
     }
-</style>
+
 
 /*  Novels -Styles*/
 /* Theme Variables */
@@ -702,19 +702,7 @@ header {
     color: white;
 }
 
-/* Table of Contents */
-.toc {
-    position: fixed;
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: var(--secondary-bg);
-    padding: 20px;
-    border-radius: 10px;
-    max-width: 250px;
-    max-height: 80vh;
-    overflow-y: auto;
-}
+
 
 /* Font Controls */
 .font-controls {
