@@ -4011,8 +4011,7 @@ if <span
             </div>
 
             <!-- Add new Immersive Reader tab -->
-            <div id="immersive" class="tab-content">
-                <h2>Immersive Reader</h2>
+
 
                 <div class="search-box">
                     <input type="text" id="search-box" placeholder="Search in text...">
@@ -4020,19 +4019,7 @@ if <span
                     <div class="search-results" id="search-results"></div>
                 </div>
 
-                <div class="read-aloud-controls">
-                    <button onclick="startReading()">Play</button>
-                    <button onclick="pauseReading()">Pause</button>
-                    <button onclick="stopReading()">Stop</button>
-                    <select class="speed-control" onchange="changeReadingSpeed(this.value)">
-                        <option value="0.8">Slow</option>
-                        <option value="1.0" selected>Normal</option>
-                        <option value="1.2">Fast</option>
-                    </select>
-                </div>
 
-                <div id="immersive-content" class="immersive-text">
-                    <!-- Content will be loaded from chapters dynamically -->
                 </div>
             </div>
         </div>
