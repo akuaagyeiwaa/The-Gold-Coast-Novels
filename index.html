@@ -4,149 +4,33 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gold Coast Novels</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      line-height: 1.6;
-    }
-    header {
-      background: #DAA520; /* Darker gold shade */
-      color: #fff;
-      padding: 1rem 0;
-      text-align: center;
-    }
-    nav {
-      background: #444;
-      display: flex;
-      justify-content: center;
-      padding: 0.5rem 0;
-    }
-    nav a {
-      color: #fff;
-      margin: 0 1rem;
-      text-decoration: none;
-    }
-    nav a:hover {
-      text-decoration: underline;
-    }
-    .dropdown {
-      position: relative;
-      display: inline-block;
-    }
-    .dropdown-content {
-      display: none;
-      position: absolute;
-      background-color: #444;
-      min-width: 160px;
-      box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
-      z-index: 1;
-    }
-    .dropdown-content a {
-      color: #fff;
-      padding: 0.5rem 1rem;
-      text-decoration: none;
-      display: block;
-    }
-    .dropdown-content a:hover {
-      background-color: #555;
-    }
-    .dropdown:hover .dropdown-content {
-      display: block;
-    }
-    .hero {
-      background: #F4C430; /* Lighter gold shade */
-      padding: 2rem;
-      text-align: center;
-    }
-    .about {
-      padding: 2rem;
-    }
-    footer {
-      background: #333;
-      color: #fff;
-      text-align: center;
-      padding: 1rem 0;
-      margin-top: 2rem;
-    }
-    footer a {
-      color: #fff;
-      text-decoration: none;
-    }
-    footer a:hover {
-      text-decoration: underline;
-    }
-    button {
-      margin: 1rem 0;
-      padding: 0.5rem 1rem;
-      background: #DAA520;
-      color: #fff;
-      border: none;
-      cursor: pointer;
-    }
-    button:hover {
-      background: #B8860B;
-    }
-  </style>
+  :root {
+    /* Light theme defaults */
+    --bg-color-light: #ffffff;
+    --text-color-light: #000000;
+    --accent-color-light: #F4C430;
+    --secondary-bg-light: #f5f5f5;
 
-<!-- Add to head -->
-<style>
-    .font-controls {
-        position: fixed;
-        right: 20px;
-        bottom: 20px;
-        background: var(--secondary-bg);
-        padding: 10px;
-        border-radius: 5px;
-        display: flex;
-        gap: 10px;
-    }
+    /* Common variables */
+    --transition-speed: 0.3s;
+    --spacing-large: 1rem;
+    --spacing-medium: 0.5rem;
+    --border-radius-round: 50%;
+}
 
-    .font-button {
-        padding: 5px 10px;
-        background: var(--accent-color);
-        border: none;
-        border-radius: 3px;
-        cursor: pointer;
-        color: white;
-    }
-</style>
+:root {
+    /* Light theme defaults */
+    --bg-color-light: #ffffff;
+    --text-color-light: #000000;
+    --accent-color-light: #F4C430;
+    --secondary-bg-light: #f5f5f5;
 
-<!-- Add to head section -->
-<style>
-    .analytics-dashboard {
-        position: fixed;
-        right: 20px;
-        bottom: 80px;
-        background: var(--secondary-bg);
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        display: none; /* Hidden by default */
-        z-index: 1000;
-    }
-
-    .analytics-toggle {
-        position: fixed;
-        right: 20px;
-        bottom: 20px;
-        padding: 10px;
-        background: var(--accent-color);
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-    }
-
-    .analytics-chart {
-        margin: 10px 0;
-        padding: 10px;
-        background: white;
-        border-radius: 5px;
-    }
-</style>
-
+    /* Common variables */
+    --transition-speed: 0.3s;
+    --spacing-large: 1rem;
+    --spacing-medium: 0.5rem;
+    --border-radius-round: 50%;
+}
 <!-- Add this in your <head> tag before closing </head> -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=YOUR-GA4-ID"></script>
 <script>
