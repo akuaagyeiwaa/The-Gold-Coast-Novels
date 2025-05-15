@@ -112,6 +112,34 @@ header {
     display: block;
 }
 
+/* --- Dropdown Tab (for Home) --- */
+.dropdown-tab {
+  position: relative;
+}
+
+.dropdown-tab .dropdown-content {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: white;
+  border: 1px solid #ccc;
+  display: none;
+  z-index: 1000;
+  min-width: 180px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown-tab .dropdown-content a {
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+  color: black;
+}
+
+.dropdown-tab .dropdown-content a:hover {
+  background-color: #f0f0f0;
+}
+
 
 /* Accordion */
 .accordion {
