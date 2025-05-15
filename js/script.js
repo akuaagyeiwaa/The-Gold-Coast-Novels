@@ -168,3 +168,22 @@ function changeNovel() {
     document.getElementById('historicalTab').innerHTML = `
         <p>${novelData.history}</p>`;
 }
+
+// ... other functions like openTab(), toggleTheme(), changeNovel(), etc.
+
+// === Photo Modal Viewer ===
+function openModal(imageDiv) {
+    const modal = document.getElementById("imageModal");
+    const modalImg = document.getElementById("modalImage");
+    const modalCaption = document.getElementById("modalCaption");
+
+    const img = imageDiv.querySelector("img");
+    modal.style.display = "block";
+    modalImg.src = img.src;
+    modalCaption.innerText = img.alt || "";
+}
+
+function closeModal() {
+    document.getElementById("imageModal").style.display = "none";
+}
+
