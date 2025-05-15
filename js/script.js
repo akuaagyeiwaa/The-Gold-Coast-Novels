@@ -121,3 +121,50 @@ function toggleReadAloud() {
     speechInstance.lang = 'en-US';
     speechSynthesis.speak(speechInstance);
 }
+
+// === Novel-Based Tab Content Loader ===
+function changeNovel() {
+    const novel = document.getElementById('novelSelect').value;
+
+    const content = {
+        marita: {
+            map: 'Map of Marita settings, including coastal trading routes.',
+            timeline: 'Timeline of Marita’s events: migration, rebellion, reconciliation.',
+            locations: '<li>Elmina</li><li>Cape Coast</li><li>Accra</li>',
+            history: 'Marita reflects early 20th-century colonial resistance movements.'
+        },
+        'ethiopia-unbound': {
+            map: 'Map showing locations referenced in Ethiopia Unbound.',
+            timeline: 'Timeline exploring Marcus Garvey influences and pan-Africanism.',
+            locations: '<li>Liberia</li><li>London</li><li>Gold Coast</li>',
+            history: 'Explores early pan-African intellectual thought.'
+        },
+        'the-anglo-fanti': {
+            map: 'Map of the Anglo-Fanti conflict regions.',
+            timeline: 'Major events in Fanti and British interaction during colonization.',
+            locations: '<li>Fanti Confederacy</li><li>Fort William</li><li>Anomabo</li>',
+            history: 'Contextual background of the Anglo-Fanti War and alliances.'
+        },
+        eighteenpence: {
+            map: 'Political geography of chiefs and land disputes.',
+            timeline: 'Succession disputes and court battles in colonial Gold Coast.',
+            locations: '<li>Kumasi</li><li>Accra</li><li>Saltpond</li>',
+            history: 'Details of judicial systems and resistance through storytelling.'
+        }
+    };
+
+    const novelData = content[novel];
+    if (!novelData) return;
+
+    document.getElementById('mapTab').innerHTML = `
+        <div class="map-container"><p>${novelData.map}</p></div>`;
+
+    document.getElementById('timelineTab').innerHTML = `
+        <div class="timeline-container"><p>${novelData.timeline}</p></div>`;
+
+    document.getElementById('locationsTab').innerHTML = `
+        <ul class="location-list">${novelData.locations}</ul>`;
+
+    document.getElementById('historicalTab').innerHTML = `
+        <p>${novelData.history}</p>`;
+}
