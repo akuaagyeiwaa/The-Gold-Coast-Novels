@@ -1,42 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Immersion Reader - Gold Coast Novels</title>
-    <link rel="stylesheet" href="css/styles.css">
-
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Immersion Reader - Gold Coast Novels</title>
+  <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
-    <div id="immersive-content">
-        <div class="reading-controls">
-            <div class="novel-selector">
-                <label for="novelSelect">Select Novel:</label>
-                <select id="novelSelect" onchange="loadNovel()">
-                    <option value="">Choose a novel...</option>
-                    <option value="marita.html">Marita</option>
-                    <option value="ethiopia-unbound.html">Ethiopia Unbound</option>
-                    <option value="the-anglo-fanti.html">The Anglo-Fanti</option>
-                    <option value="eighteenpence.html">Eighteenpence</option>
-                </select>
-            </div>
+  <main id="immersive-content">
+    <div class="reading-controls">
+      <div class="novel-selector">
+        <label for="novelSelect">Select Novel:</label>
+        <select id="novelSelect" onchange="loadNovel()">
+          <option value="">Choose a novel...</option>
+          <option value="marita.html">Marita</option>
+          <option value="ethiopia-unbound.html">Ethiopia Unbound</option>
+          <option value="the-anglo-fanti.html">The Anglo-Fanti</option>
+          <option value="eighteenpence.html">Eighteenpence</option>
+        </select>
+      </div>
 
-            <div class="font-controls">
-                <button onclick="adjustFontSize('decrease')">A-</button>
-                <button onclick="adjustFontSize('reset')">A</button>
-                <button onclick="adjustFontSize('increase')">A+</button>
-                <button onclick="toggleReadAloud()" id="readAloudBtn">Read Aloud</button>
-            </div>
-        </div>
-
-        <div id="loading" class="loading">Loading...</div>
-        <div id="content-area" class="content-area">
-            <p>Please select a novel to begin reading...</p>
-        </div>
+      <div class="font-controls">
+        <button onclick="adjustFontSize('decrease')">A-</button>
+        <button onclick="adjustFontSize('reset')">A</button>
+        <button onclick="adjustFontSize('increase')">A+</button>
+        <button onclick="toggleReadAloud()" id="readAloudBtn">Read Aloud</button>
+      </div>
     </div>
 
-    <script src="js/script.js"></script>
-</body>
+    <div id="loading" class="loading" style="display: none;">Loading...</div>
+    <div id="content-area" class="content-area">
+      <p>Please select a novel to begin reading...</p>
+    </div>
+  </main>
 
+  <!-- Google Translate (optional if used elsewhere) -->
+  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+  <!-- Main Site Logic -->
+  <script src="js/script.js"></script>
+</body>
 </html>
