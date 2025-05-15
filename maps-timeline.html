@@ -55,29 +55,6 @@
         </div>
     </div>
 
-    <script>
-        function openTab(evt, tabName) {
-            const tabContents = document.getElementsByClassName("tab-content");
-            for (let content of tabContents) {
-                content.classList.remove("active");
-            }
-
-            const tabButtons = document.getElementsByClassName("tab-button");
-            for (let button of tabButtons) {
-                button.classList.remove("active");
-            }
-
-            document.getElementById(tabName).classList.add("active");
-            evt.currentTarget.classList.add("active");
-        }
-
-        function changeNovel() {
-            const novel = document.getElementById("novelSelect").value;
-            if (novel) {
-                // This function will be expanded later to load novel-specific data
-                console.log(`Selected novel: ${novel}`);
-            }
-        }
-    </script>
+    <script src="js/script.js"></script>
 </body>
 </html>
