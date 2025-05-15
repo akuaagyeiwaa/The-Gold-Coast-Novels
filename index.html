@@ -27,7 +27,17 @@
     <h1>Gold Coast Novels</h1>
   </header>
 
-  <nav>
+
+
+  <div class="tabs">
+    <button class="tab-button" onclick="openTab(event, 'novels')">Novels</button>
+    <button class="tab-button" onclick="openTab(event, 'google-translate')">Google Translate</button>
+    <button class="tab-button" onclick="openTab(event, 'immersive-reader')">Immersive Reader</button>
+    <button class="tab-button" onclick="openTab(event, 'maps-timeline')">Maps & Timeline</button>
+    <button class="tab-button" onclick="openTab(event, 'about')">About</button>
+  </div>
+
+<nav>
     <a href="index.html">Home</a>
     <div class="dropdown">
       <a href="#">The Novels</a>
@@ -39,15 +49,6 @@
       </div>
     </div>
   </nav>
-
-  <div class="tabs">
-    <button class="tab-button" onclick="openTab(event, 'novels')">Novels</button>
-    <button class="tab-button" onclick="openTab(event, 'google-translate')">Google Translate</button>
-    <button class="tab-button" onclick="openTab(event, 'immersive-reader')">Immersive Reader</button>
-    <button class="tab-button" onclick="openTab(event, 'maps-timeline')">Maps & Timeline</button>
-    <button class="tab-button" onclick="openTab(event, 'about')">About</button>
-  </div>
-
   <main>
     <section class="hero">
       <h2>Welcome to the Gold Coast Novels Project</h2>
