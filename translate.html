@@ -1,47 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gold Coast Novels - Translation</title>
-    <link rel="stylesheet" href="css/styles.css">
-
-    <!-- Add Google Translate API Script -->
-    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gold Coast Novels - Translation</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </head>
 <body>
-    <div id="translator-content">
-        <div class="controls">
-            <div class="novel-selector">
-                <label for="novelSelect">Select Novel:</label>
-                <select id="novelSelect" onchange="loadNovel()">
-                    <option value="">Choose a novel...</option>
-                    <option value="marita.html">Marita</option>
-                    <option value="ethiopia_unbound.html">Ethiopia Unbound</option>
-                    <option value="the_anglo_fanti.html">The Anglo-Fanti</option>
-                    <option value="eighteenpence.html">Eighteenpence</option>
-                </select>
-            </div>
-            <div class="language-selector">
-                <label for="google_translate_element">Translate to:</label>
-                <div id="google_translate_element"></div>
-            </div>
-        </div>
-
-        <div class="content-panel">
-            <div id="loading">Loading...</div>
-            <div id="original-content" class="original-text">
-                Please select a novel to begin...
-            </div>
-        </div>
-
-        <div class="content-panel">
-            <div id="translated-content" class="translated-content">
-                Translation will appear here...
-            </div>
-        </div>
+  <div id="translator-content">
+    <div class="controls">
+      <div class="novel-selector">
+        <label for="novelSelect">Select Novel:</label>
+        <select id="novelSelect" onchange="loadNovel()">
+          <option value="">Choose a novel...</option>
+          <option value="marita.html">Marita</option>
+          <option value="ethiopia_unbound.html">Ethiopia Unbound</option>
+          <option value="the_anglo_fanti.html">The Anglo-Fanti</option>
+          <option value="eighteenpence.html">Eighteenpence</option>
+        </select>
+      </div>
+      <div class="language-selector">
+        <label for="google_translate_element">Translate to:</label>
+        <div id="google_translate_element"></div>
+      </div>
     </div>
 
-    <script src="js/script.js"></script>
+    <div class="content-panel">
+      <div id="loading" style="display: none;">Loading...</div>
+      <div id="original-content" class="original-text">
+        Please select a novel to begin...
+      </div>
+    </div>
+  </div>
+
+  <script src="js/script.js"></script>
 </body>
 </html>
