@@ -1,26 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Gold Coast Novels</title>
-  <link rel="stylesheet" href="css/styles.css">
-  <!-- Add this in your <head> tag before closing </head> -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=YOUR-GA4-ID"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <link rel="stylesheet" href="css/styles.css" />
 
-  gtag('config', 'YOUR-GA4-ID', {
-    'page_title': 'Marita Novel',
-    'custom_map': {
-      'dimension1': 'chapter_name',
-      'dimension2': 'reading_progress',
-      'metric1': 'reading_time'
-    }
-  });
-</script>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=YOUR-GA4-ID"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'YOUR-GA4-ID', {
+      'page_title': 'Gold Coast Novels',
+      'custom_map': {
+        'dimension1': 'chapter_name',
+        'dimension2': 'reading_progress',
+        'metric1': 'reading_time'
+      }
+    });
+  </script>
 </head>
 <body>
   <header>
@@ -56,13 +57,14 @@
       <div id="google_translate_element"></div>
     </section>
 
-    <section class="about">
+    <section class="about" id="about">
       <h2>About</h2>
       <p>This website is dedicated to showcasing novels from the Gold Coast, highlighting their cultural and historical significance.</p>
     </section>
   </main>
 
   <footer>
-    <p>&copy; 2023 Akua Agyeiwaa | <a href="https://digitalhumanities.unl.edu" target="_blank">UNL Digital Humanities</a></p>
+    <p>&copy; 2023 Akua Agyeiwaa | <a href="https://digitalhumanities.unl.edu" target="_blank" rel="noopener noreferrer">UNL Digital Humanities</a></p>
   </footer>
 </body>
+</html>
