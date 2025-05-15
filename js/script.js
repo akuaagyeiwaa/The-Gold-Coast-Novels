@@ -170,6 +170,34 @@ function changeNovel() {
 }
 
 // ... other functions like openTab(), toggleTheme(), changeNovel(), etc.
+function openTab(evt, tabName) {
+  // Hide all tab contents
+  const tabContents = document.querySelectorAll('.tab-content');
+  tabContents.forEach(content => content.classList.remove('active'));
+
+  // Remove 'active' class from all tab buttons
+  const tabButtons = document.querySelectorAll('.tab-button');
+  tabButtons.forEach(button => button.classList.remove('active'));
+
+  // Show the selected tab content
+  document.getElementById(tabName).classList.add('active');
+
+  // Add 'active' class to the clicked tab button
+  evt.currentTarget.classList.add('active');
+
+  // Store the active tab in localStorage
+  localStorage.setItem('activeTab', tabName);
+}
+
+// Restore the active tab on page load
+document.addEventListener('DOMContentLoaded', () => {
+  const activeTab = localStorage.getItem('activeTab') || 'fulltext';
+  const tabButton = document.querySelector(`.tab-button[onclick="openTab(event, '${activeTab}')"]`);
+  if (tabButton) {
+    tabButton.click();
+  }
+});
+
 
 // === Photo Modal Viewer ===
 function openModal(imageDiv) {
