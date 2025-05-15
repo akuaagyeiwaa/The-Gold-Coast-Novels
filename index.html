@@ -29,25 +29,25 @@
 
 
 
-  <div class="tabs">
-    <button class="tab-button" onclick="openTab(event, 'novels')">Home</button>
-    <button class="tab-button" onclick="openTab(event, 'google-translate')">Google Translate</button>
-    <button class="tab-button" onclick="openTab(event, 'immersive-reader')">Immersive Reader</button>
-    <button class="tab-button" onclick="openTab(event, 'maps-timeline')">Maps & Timeline</button>
-    <button class="tab-button" onclick="openTab(event, 'about')">About</button>
+ <div class="tabs">
+  <button class="tab-button" onclick="toggleDropdown()">Home</button>
+  <div id="novelsDropdown" class="dropdown-content" style="display: none;">
+    <a href="marita.html">Marita</a>
+    <a href="ethiopia_unbound.html">Ethiopia Unbound</a>
+    <a href="the_anglo_fanti.html">The Anglo-Fanti</a>
+    <a href="eighteenpence.html">Eighteenpence</a>
   </div>
+  <button class="tab-button" onclick="openTab(event, 'google-translate')">Google Translate</button>
+  <button class="tab-button" onclick="openTab(event, 'immersive-reader')">Immersive Reader</button>
+  <button class="tab-button" onclick="openTab(event, 'maps-timeline')">Maps & Timeline</button>
+  <button class="tab-button" onclick="openTab(event, 'about')">About</button>
+</div>
 
    <main>
      <div id="novels" class="tab-content active">
   <!-- Previously 'novels' -->
     <h2>Explore thexxx Novels</h2>
-    <ul>
-    <li>
-      <li><a href="marita.html">Marita</a></li>
-      <li><a href="ethiopia_unbound.html">Ethiopia Unbound</a></li>
-      <li><a href="the_anglo_fanti.html">The Anglo-Fanti</a></li>
-      <li><a href="eighteenpence.html">Eighteenpence</a></li>
-    </ul>
+
   </div>
 
     <div id="google-translate" class="tab-content">
