@@ -42,57 +42,6 @@
         </div>
     </div>
 
-    <script>
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement({
-                pageLanguage: 'en',
-                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-            }, 'google_translate_element');
-        }
-
-        async function loadNovel() {
-            const select = document.getElementById('novelSelect');
-            const selectedNovel = select.value;
-
-            if (!selectedNovel) return;
-
-            document.getElementById('loading').style.display = 'block';
-            document.getElementById('original-content').style.display = 'none';
-
-            try {
-                const response = await fetch(selectedNovel);
-                const html = await response.text();
-
-                // Create a temporary container to parse the HTML
-                const parser = new DOMParser();
-                const doc = parser.parseFromString(html, 'text/html');
-
-                // Extract the main content - adjust the selector based on your HTML structure
-                const content = doc.querySelector('body').innerHTML;
-
-                document.getElementById('original-content').innerHTML = content;
-
-                // Trigger Google Translate
-                if (window.location.hash) {
-                    if (window.location.hash.includes('googtrans')) {
-                        const currentLang = window.location.hash.split('/')[2];
-                        const googleFrame = document.querySelector('.goog-te-combo');
-                        if (googleFrame) {
-                            googleFrame.value = currentLang;
-                            googleFrame.dispatchEvent(new Event('change'));
-                        }
-                    }
-                }
-
-            } catch (error) {
-                console.error('Error loading novel:', error);
-                document.getElementById('original-content').innerHTML =
-                    '<p>Error loading novel. Please try again.</p>';
-            }
-
-            document.getElementById('loading').style.display = 'none';
-            document.getElementById('original-content').style.display = 'block';
-        }
-    </script>
+    <script src="js/script.js"></script>
 </body>
 </html>
