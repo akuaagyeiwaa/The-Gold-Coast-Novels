@@ -123,8 +123,8 @@ function toggleReadAloud() {
 }
 
 // === Novel-Based Tab Content Loader ===
-function changeNovel() {
-    const novel = document.getElementById('novelSelect').value;
+function changeTheNovels() {
+    const novel = document.getElementById('ThenovelsSelect').value;
 
     const content = {
         marita: {
