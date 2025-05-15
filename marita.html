@@ -24,6 +24,7 @@
   <main>
     <div class="tab-container">
       <div class="tabs">
+        <button class="tab-button" onclick="openTab(event, 'the-author')">The Author</button>
         <button class="tab-button" onclick="openTab(event, 'fulltext')">Full Text</button>
         <button class="tab-button" onclick="openTab(event, 'characters')">Characters</button>
         <button class="tab-button" onclick="openTab(event, 'themes')">Themes</button>
@@ -31,7 +32,7 @@
       </div>
     </div>
 
-          <div id="author" class="tab-content">
+<div id="author" class="tab-content">
                 <h2>About the Author</h2>
                 <div class="author-info">
                     <h3>Author Biography</h3>
@@ -42,7 +43,7 @@
 
                   </p>
                 </div>
-            </div>
+</div>
 
             <div id="fulltext" class="tab-content">
                 <h2>Full Text</h2>
@@ -3970,11 +3971,15 @@ if <span
 
           <div class="tab-container">
 <div class="tabs">
+    <button class="tab-button active" onclick="openTab(event, 'the-author')">The Author</button>
     <button class="tab-button active" onclick="openTab(event, 'fulltext')">Full Text</button>
     <button class="tab-button" onclick="openTab(event, 'characters')">Characters</button>
     <button class="tab-button" onclick="openTab(event, 'themes')">Themes</button>
     <button class="tab-button" onclick="openTab(event, 'excerpts')">Excerpts</button>
   </div>
+</div>
+<div id="the-author" class="tab-content active">
+  <!-- Full text content goes here -->
 </div>
 
 <div id="fulltext" class="tab-content active">
