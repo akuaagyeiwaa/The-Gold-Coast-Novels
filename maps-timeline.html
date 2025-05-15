@@ -1,60 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gold Coast Novels - Maps & Timeline</title>
-    <link rel="stylesheet" href="css/styles.css">
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gold Coast Novels - Maps & Timeline</title>
+  <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
-    <div class="container">
-        <div class="novel-selector">
-            <select id="novelSelect" onchange="changeNovel()">
-                <option value="">Select a Novel...</option>
-                <option value="marita">Marita</option>
-                <option value="ethiopia-unbound">Ethiopia Unbound</option>
-                <option value="the-anglo-fanti">The Anglo-Fanti</option>
-                <option value="eighteenpence">Eighteenpence</option>
-            </select>
-        </div>
-
-        <div class="tab-container">
-            <div class="tabs">
-                <button class="tab-button active" onclick="openTab(event, 'mapTab')">Map View</button>
-                <button class="tab-button" onclick="openTab(event, 'timelineTab')">Timeline</button>
-                <button class="tab-button" onclick="openTab(event, 'locationsTab')">Locations</button>
-                <button class="tab-button" onclick="openTab(event, 'historicalTab')">Historical Context</button>
-            </div>
-
-            <div id="mapTab" class="tab-content active">
-                <div class="map-container">
-                    <p class="placeholder-text">Map content will be loaded here.<br>
-                    (Google Earth integration pending)</p>
-                </div>
-            </div>
-
-            <div id="timelineTab" class="tab-content">
-                <div class="timeline-container">
-                    <p class="placeholder-text">Timeline events will be displayed here.<br>
-                    Select a novel to view its timeline.</p>
-                </div>
-            </div>
-
-            <div id="locationsTab" class="tab-content">
-                <ul class="location-list">
-                    <p class="placeholder-text">Location details will be listed here.<br>
-                    Select a novel to view its locations.</p>
-                </ul>
-            </div>
-
-            <div id="historicalTab" class="tab-content">
-                <p class="placeholder-text">Historical context and information will be shown here.<br>
-                Select a novel to view historical details.</p>
-            </div>
-        </div>
+  <div class="container">
+    <div class="novel-selector">
+      <select id="novelSelect" onchange="changeNovel()">
+        <option value="">Select a Novel...</option>
+        <option value="marita">Marita</option>
+        <option value="ethiopia-unbound">Ethiopia Unbound</option>
+        <option value="the-anglo-fanti">The Anglo-Fanti</option>
+        <option value="eighteenpence">Eighteenpence</option>
+      </select>
     </div>
 
-    <script src="js/script.js"></script>
+    <div class="tab-container">
+      <div class="tabs">
+        <button class="tab-button" onclick="openTab(event, 'mapTab')">Map View</button>
+        <button class="tab-button" onclick="openTab(event, 'timelineTab')">Timeline</button>
+        <button class="tab-button" onclick="openTab(event, 'locationsTab')">Locations</button>
+        <button class="tab-button" onclick="openTab(event, 'historicalTab')">Historical Context</button>
+      </div>
+
+      <div id="mapTab" class="tab-content">
+        <div class="map-container">
+          <p class="placeholder-text">Map content will be loaded here.<br>
+            (Google Earth integration pending)</p>
+        </div>
+      </div>
+
+      <div id="timelineTab" class="tab-content">
+        <div class="timeline-container">
+          <p class="placeholder-text">Timeline events will be displayed here.<br>
+            Select a novel to view its timeline.</p>
+        </div>
+      </div>
+
+      <div id="locationsTab" class="tab-content">
+        <ul class="location-list">
+          <p class="placeholder-text">Location details will be listed here.<br>
+            Select a novel to view its locations.</p>
+        </ul>
+      </div>
+
+      <div id="historicalTab" class="tab-content">
+        <p class="placeholder-text">Historical context and information will be shown here.<br>
+          Select a novel to view historical details.</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/script.js"></script>
 </body>
 </html>
