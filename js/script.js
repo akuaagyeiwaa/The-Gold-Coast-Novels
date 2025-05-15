@@ -12,6 +12,13 @@ function openTab(evt, tabId) {
     evt.currentTarget.classList.add('active');
 }
 
+
+// === Dropdown for Home Tab ===
+function toggleDropdown() {
+  const dropdown = document.getElementById('novelsDropdown');
+  dropdown.style.display = dropdown.style.display === 'none' ? 'block' : 'none';
+}
+
 // === Read Aloud ===
 function readAloud() {
     const target = document.getElementById('welcome-message');
