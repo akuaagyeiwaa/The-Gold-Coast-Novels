@@ -29,19 +29,23 @@
 
 
 
- <div class="tabs">
-  <button class="tab-button" onclick="toggleDropdown()">Home</button>
-  <div id="novelsDropdown" class="dropdown-content" style="display: none;">
-    <a href="marita.html">Marita</a>
-    <a href="ethiopia_unbound.html">Ethiopia Unbound</a>
-    <a href="the_anglo_fanti.html">The Anglo-Fanti</a>
-    <a href="eighteenpence.html">Eighteenpence</a>
+<div class="tabs">
+  <div class="dropdown-tab">
+    <button class="tab-button" onclick="toggleDropdown()">Home</button>
+    <div id="novelsDropdown" class="dropdown-content">
+      <a href="marita.html">Marita</a>
+      <a href="ethiopia_unbound.html">Ethiopia Unbound</a>
+      <a href="the_anglo_fanti.html">The Anglo-Fanti</a>
+      <a href="eighteenpence.html">Eighteenpence</a>
+    </div>
   </div>
+
   <button class="tab-button" onclick="openTab(event, 'google-translate')">Google Translate</button>
   <button class="tab-button" onclick="openTab(event, 'immersive-reader')">Immersive Reader</button>
   <button class="tab-button" onclick="openTab(event, 'maps-timeline')">Maps & Timeline</button>
   <button class="tab-button" onclick="openTab(event, 'about')">About</button>
 </div>
+
 
    <main>
      <div id="novels" class="tab-content active">
