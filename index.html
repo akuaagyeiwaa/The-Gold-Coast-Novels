@@ -12,7 +12,6 @@
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
-
     gtag('config', 'YOUR-GA4-ID', {
       'page_title': 'Gold Coast Novels',
       'custom_map': {
@@ -57,14 +56,41 @@
       <div id="google_translate_element"></div>
     </section>
 
-    <section class="about" id="about">
-      <h2>About</h2>
+    <!-- Tab Content Sections -->
+    <div id="novels" class="tab-content">
+      <h3>Explore Our Collection</h3>
+      <p>Select a novel from the navigation or jump into immersive reading.</p>
+    </div>
+
+    <div id="google-translate" class="tab-content">
+      <h3>Translate This Page</h3>
+      <p>Use the Google Translate widget above to view the site in your preferred language.</p>
+    </div>
+
+    <div id="immersive-reader" class="tab-content">
+      <h3>Immersive Reader</h3>
+      <p>Access simplified reading modes and audio support for selected texts.</p>
+    </div>
+
+    <div id="maps-timeline" class="tab-content">
+      <h3>Maps & Timeline</h3>
+      <p>Geographic and historical context of each novel's setting and events.</p>
+    </div>
+
+    <div id="about" class="tab-content">
+      <h3>About This Project</h3>
       <p>This website is dedicated to showcasing novels from the Gold Coast, highlighting their cultural and historical significance.</p>
-    </section>
+    </div>
   </main>
 
   <footer>
     <p>&copy; 2023 Akua Agyeiwaa | <a href="https://digitalhumanities.unl.edu" target="_blank" rel="noopener noreferrer">UNL Digital Humanities</a></p>
   </footer>
+
+  <!-- Google Translate API -->
+  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+  <!-- Main JavaScript -->
+  <script src="js/script.js"></script>
 </body>
 </html>
