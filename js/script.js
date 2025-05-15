@@ -57,8 +57,8 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // === Load Novel into Immersion Reader ===
-function loadNovel() {
-    const select = document.getElementById('novelSelect');
+function loadTheNovels() {
+    const select = document.getElementById('ThenovelsSelect');
     const contentArea = document.getElementById('content-area');
     const loading = document.getElementById('loading');
     const selectedFile = select.value;
