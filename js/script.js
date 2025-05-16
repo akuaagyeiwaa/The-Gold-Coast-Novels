@@ -196,25 +196,27 @@ function changeTheNovels() {
 
 // === Initial Setup ===
 document.addEventListener('DOMContentLoaded', () => {
-    const activeTab = localStorage.getItem('activeTab') || 'fulltext';
-    const tabButton = document.querySelector(`.tab-button[onclick="openTab(event, '${activeTab}')"]`);
-    if (tabButton) tabButton.click();
+    function openTab(event, tabId) {
+        // Hide all tab content
+        const tabContents = document.querySelectorAll('.tab-content');
+        tabContents.forEach(tab => tab.classList.remove('active'));
 
-    const savedTheme = localStorage.getItem("theme");
-    if (savedTheme) {
-        document.documentElement.setAttribute("data-theme", savedTheme);
+        // Remove active class from all tab buttons
+        const tabButtons = document.querySelectorAll('.tab-button');
+        tabButtons.forEach(button => button.classList.remove('active'));
+
+        // Show the selected tab content
+        const selectedTab = document.getElementById(tabId);
+        if (selectedTab) {
+            selectedTab.classList.add('active');
+        }
+
+        // Highlight the active tab button
+        event.currentTarget.classList.add('active');
     }
 
-    const dropdown = document.getElementById('novelsDropdown');
-    if (dropdown) {
-        dropdown.addEventListener('click', (event) => {
-            if (event.target.tagName === 'A') {
-                event.preventDefault();
-                const novelId = event.target.getAttribute('href').replace('.html', '');
-                updateTabsForNovel(novelId);
-            }
-        });
-    }
+    // Attach the function to the global scope for inline `onclick` attributes
+    window.openTab = openTab;
 });
 
 // === Photo Modal Viewer ===
