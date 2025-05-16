@@ -222,3 +222,42 @@ function closeModal() {
     document.getElementById("imageModal").style.display = "none";
 }
 
+function updateTabsForNovel(novelId) {
+    const content = {
+        marita: {
+            immersiveReader: "Immersive reading experience for Marita.",
+            translate: "Translate Marita into your preferred language.",
+            mapsTimeline: "Explore Marita's settings and timeline."
+        },
+        'ethiopia-unbound': {
+            immersiveReader: "Immersive reading experience for Ethiopia Unbound.",
+            translate: "Translate Ethiopia Unbound into your preferred language.",
+            mapsTimeline: "Explore Ethiopia Unbound's settings and timeline."
+        },
+        'the-anglo-fanti': {
+            immersiveReader: "Immersive reading experience for The Anglo-Fanti.",
+            translate: "Translate The Anglo-Fanti into your preferred language.",
+            mapsTimeline: "Explore The Anglo-Fanti's settings and timeline."
+        },
+        eighteenpence: {
+            immersiveReader: "Immersive reading experience for Eighteenpence.",
+            translate: "Translate Eighteenpence into your preferred language.",
+            mapsTimeline: "Explore Eighteenpence's settings and timeline."
+        }
+    };
+
+    const novelData = content[novelId];
+    if (!novelData) return;
+
+    document.getElementById('immersive-reader').innerHTML = `
+        <h3>Immersive Reader</h3>
+        <p>${novelData.immersiveReader}</p>`;
+
+    document.getElementById('google-translate').innerHTML = `
+        <h3>Translate This Page</h3>
+        <p>${novelData.translate}</p>`;
+
+    document.getElementById('maps-timeline').innerHTML = `
+        <h3>Maps & Timeline</h3>
+        <p>${novelData.mapsTimeline}</p>`;
+}
