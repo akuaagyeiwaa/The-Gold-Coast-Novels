@@ -1,15 +1,14 @@
 // === Tabs ===
-function openTab(evt, tabId) {
-    const contents = document.querySelectorAll('.tab-content');
-    contents.forEach(content => content.style.display = "none");
+function openTab(evt, tabName) {
+    const tabContents = document.querySelectorAll('.tab-content');
+    tabContents.forEach(content => content.classList.remove('active'));
 
-    const buttons = document.querySelectorAll('.tab-button');
-    buttons.forEach(button => button.classList.remove('active'));
+    const tabButtons = document.querySelectorAll('.tab-button');
+    tabButtons.forEach(button => button.classList.remove('active'));
 
-    const selectedTab = document.getElementById(tabId);
-    if (selectedTab) selectedTab.style.display = "block";
-
+    document.getElementById(tabName).classList.add('active');
     evt.currentTarget.classList.add('active');
+    localStorage.setItem('activeTab', tabName);
 }
 
 // === Update Tabs for Selected Novel ===
@@ -55,8 +54,8 @@ function updateTabsForNovel(novelId) {
 
 // === Dropdown for Home Tab ===
 function toggleDropdown() {
-  const dropdown = document.getElementById('novelsDropdown');
-  dropdown.style.display = dropdown.style.display === 'none' ? 'block' : 'none';
+    const dropdown = document.getElementById('novelsDropdown');
+    dropdown.style.display = dropdown.style.display === 'none' ? 'block' : 'none';
 }
 
 // === Read Aloud ===
@@ -69,7 +68,7 @@ function readAloud() {
 
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.lang = 'en-US';
-    speechSynthesis.cancel(); // stop any previous
+    speechSynthesis.cancel();
     speechSynthesis.speak(utterance);
 }
 
@@ -82,7 +81,7 @@ function toggleTheme() {
     localStorage.setItem("theme", newTheme);
 }
 
-// === Google Translate ===
+// === Google Translate Init ===
 function googleTranslateElementInit() {
     new google.translate.TranslateElement({
         pageLanguage: 'en',
@@ -90,7 +89,6 @@ function googleTranslateElementInit() {
         layout: google.translate.TranslateElement.InlineLayout.SIMPLE
     }, 'google_translate_element');
 }
-
 
 // === Load Novel into Immersion Reader ===
 function loadTheNovels() {
@@ -111,7 +109,6 @@ function loadTheNovels() {
             return response.text();
         })
         .then(html => {
-            // Extract main content from the selected novel's HTML
             const parser = new DOMParser();
             const doc = parser.parseFromString(html, 'text/html');
             const mainContent = doc.querySelector('main') || doc.body;
@@ -127,24 +124,19 @@ function loadTheNovels() {
 
 // === Font Size Adjustment ===
 let currentFontSize = 1.0;
-
 function adjustFontSize(action) {
     const contentArea = document.getElementById('content-area');
-
     if (action === 'increase') currentFontSize += 0.1;
     else if (action === 'decrease') currentFontSize = Math.max(0.6, currentFontSize - 0.1);
     else currentFontSize = 1.0;
-
     contentArea.style.fontSize = currentFontSize + 'rem';
 }
 
-// === Read Aloud Toggle ===
+// === Read Aloud Toggle for Immersive Text ===
 let speechInstance = null;
-
 function toggleReadAloud() {
     const content = document.getElementById('content-area');
     if (!content) return;
-
     if (speechSynthesis.speaking) {
         speechSynthesis.cancel();
         return;
@@ -158,7 +150,7 @@ function toggleReadAloud() {
     speechSynthesis.speak(speechInstance);
 }
 
-// === Novel-Based Tab Content Loader ===
+// === Novel-Based Tab Content Loader for Maps & Timeline ===
 function changeTheNovels() {
     const novel = document.getElementById('ThenovelsSelect').value;
 
@@ -194,53 +186,25 @@ function changeTheNovels() {
 
     document.getElementById('mapTab').innerHTML = `
         <div class="map-container"><p>${novelData.map}</p></div>`;
-
     document.getElementById('timelineTab').innerHTML = `
         <div class="timeline-container"><p>${novelData.timeline}</p></div>`;
-
     document.getElementById('locationsTab').innerHTML = `
         <ul class="location-list">${novelData.locations}</ul>`;
-
     document.getElementById('historicalTab').innerHTML = `
         <p>${novelData.history}</p>`;
 }
 
-// ... other functions like openTab(), toggleTheme(), changeNovel(), etc.
-function openTab(evt, tabName) {
-  // Hide all tab contents
-  const tabContents = document.querySelectorAll('.tab-content');
-  tabContents.forEach(content => content.classList.remove('active'));
-
-  // Remove 'active' class from all tab buttons
-  const tabButtons = document.querySelectorAll('.tab-button');
-  tabButtons.forEach(button => button.classList.remove('active'));
-
-  // Show the selected tab content
-  document.getElementById(tabName).classList.add('active');
-
-  // Add 'active' class to the clicked tab button
-  evt.currentTarget.classList.add('active');
-
-  // Store the active tab in localStorage
-  localStorage.setItem('activeTab', tabName);
-}
-
-});
-
 // === Initial Setup ===
 document.addEventListener('DOMContentLoaded', () => {
-    // Restore active tab
     const activeTab = localStorage.getItem('activeTab') || 'fulltext';
     const tabButton = document.querySelector(`.tab-button[onclick="openTab(event, '${activeTab}')"]`);
     if (tabButton) tabButton.click();
 
-    // Apply saved theme
     const savedTheme = localStorage.getItem("theme");
     if (savedTheme) {
         document.documentElement.setAttribute("data-theme", savedTheme);
     }
 
-    // Attach dropdown click handler
     const dropdown = document.getElementById('novelsDropdown');
     if (dropdown) {
         dropdown.addEventListener('click', (event) => {
