@@ -12,7 +12,7 @@ function openTab(evt, tabId) {
     evt.currentTarget.classList.add('active');
 }
 
-
+// === Update Tabs for Selected Novel ===
 function updateTabsForNovel(novelId) {
     const content = {
         marita: {
