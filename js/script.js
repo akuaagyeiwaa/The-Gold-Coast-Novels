@@ -91,27 +91,6 @@ function googleTranslateElementInit() {
     }, 'google_translate_element');
 }
 
-// === Initializer ===
-document.addEventListener('DOMContentLoaded', () => {
-    const defaultButton = document.querySelector('.tab-button');
-    if (defaultButton) defaultButton.click();
-
-    // Apply saved theme
-    const savedTheme = localStorage.getItem("theme");
-    if (savedTheme) {
-        document.documentElement.setAttribute("data-theme", savedTheme);
-    }
-
-      // Add event listener for the dropdown
-    const dropdown = document.getElementById('novelsDropdown');
-    dropdown.addEventListener('click', (event) => {
-        if (event.target.tagName === 'A') {
-            event.preventDefault(); // Prevent default link behavior
-            const novelId = event.target.getAttribute('href').replace('.html', '');
-            updateTabsForNovel(novelId);
-        }
-    });
-});
 
 // === Load Novel into Immersion Reader ===
 function loadTheNovels() {
@@ -246,15 +225,33 @@ function openTab(evt, tabName) {
   localStorage.setItem('activeTab', tabName);
 }
 
-// Restore the active tab on page load
-document.addEventListener('DOMContentLoaded', () => {
-  const activeTab = localStorage.getItem('activeTab') || 'fulltext';
-  const tabButton = document.querySelector(`.tab-button[onclick="openTab(event, '${activeTab}')"]`);
-  if (tabButton) {
-    tabButton.click();
-  }
 });
 
+// === Initial Setup ===
+document.addEventListener('DOMContentLoaded', () => {
+    // Restore active tab
+    const activeTab = localStorage.getItem('activeTab') || 'fulltext';
+    const tabButton = document.querySelector(`.tab-button[onclick="openTab(event, '${activeTab}')"]`);
+    if (tabButton) tabButton.click();
+
+    // Apply saved theme
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme) {
+        document.documentElement.setAttribute("data-theme", savedTheme);
+    }
+
+    // Attach dropdown click handler
+    const dropdown = document.getElementById('novelsDropdown');
+    if (dropdown) {
+        dropdown.addEventListener('click', (event) => {
+            if (event.target.tagName === 'A') {
+                event.preventDefault();
+                const novelId = event.target.getAttribute('href').replace('.html', '');
+                updateTabsForNovel(novelId);
+            }
+        });
+    }
+});
 
 // === Photo Modal Viewer ===
 function openModal(imageDiv) {
