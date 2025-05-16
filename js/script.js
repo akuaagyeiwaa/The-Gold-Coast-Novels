@@ -101,6 +101,16 @@ document.addEventListener('DOMContentLoaded', () => {
     if (savedTheme) {
         document.documentElement.setAttribute("data-theme", savedTheme);
     }
+
+      // Add event listener for the dropdown
+    const dropdown = document.getElementById('novelsDropdown');
+    dropdown.addEventListener('click', (event) => {
+        if (event.target.tagName === 'A') {
+            event.preventDefault(); // Prevent default link behavior
+            const novelId = event.target.getAttribute('href').replace('.html', '');
+            updateTabsForNovel(novelId);
+        }
+    });
 });
 
 // === Load Novel into Immersion Reader ===
